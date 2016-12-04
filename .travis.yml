@@ -1,0 +1,10 @@
+language: node_js
+node_js:
+- '5'
+deploy:
+  provider: npm
+  email: john.paul.arthur@gmail.com
+  on:
+    tags: true
+    all_branches: true
+    repo: johnpaularthur/spork
