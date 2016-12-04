@@ -1,0 +1,7 @@
+{
+    "ignore": [
+        "src/app/*",
+        "tests/*",
+        "spork.json"
+    ]
+}

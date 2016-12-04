@@ -1,0 +1,122 @@
+{
+  "name": "spork",
+  "version": "0.0.1",
+  "description": "Node ETL Editor",
+  "main": "src/server.js",
+  "bin": {
+    "spork": "./bin/spork"
+  },
+  "scripts": {
+    "start": "nodemon",
+    "spork": "node ./node_modules/spork_src/server -o",
+    "uspork": "rm -rf ./node_modules/spork_src && cp -rf ./src ./node_modules/spork_src",
+    "test": "echo \"Testing is just build at the moment, run from prepublish\"",
+    "clean": "rm ./src/public/build/bundle.js",
+    "prepublish": "bash ./scripts/prepublish.sh",
+    "resume": "bash ./scripts/resume.sh",
+    "tsc": "tsc -p ./src",
+    "tscw": "tsc -p ./src -w",
+    "uts": "npm install typescript@next tslint@3.x byots@latest --save --save-exact && npm run tsc",
+    "umonaco": "npm install monaco@latest monaco-css@latest monaco-languages@latest --save --save-exact && npm run tsc",
+    "ureact": "npm install react@latest react-dom@latest --save-dev --save-exact",
+    "utest": "npm install ts-node@latest mocha@latest --save --save-exact && npm run tsc",
+    "preversion": "npm run tsc",
+    "postversion": "git push --follow-tags",
+    "mochaw": "mocha ./src/tests -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johnpaularthur/spork.git"
+  },
+  "keywords": [
+    "javascript",
+    "typescript",
+    "ide",
+    "editor",
+    "code"
+  ],
+  "author": "johnpaularthur@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/johnpaularthur/spork/issues"
+  },
+  "preferGlobal": true,
+  "homepage": "https://github.com/johnpaularthur/spork#readme",
+  "dependencies": {
+    "basic-auth-connect": "^1.0.0",
+    "byots": "2.2.0-dev.20161113.23.11",
+    "chalk": "^1.1.3",
+    "chokidar": "1.6.1",
+    "cookie-parser": "^1.3.5",
+    "deep-equal": "^1.0.1",
+    "editorconfig": "^0.13.2",
+    "escape-html": "^1.0.3",
+    "express": "4.13.0",
+    "fuzzaldrin": "^2.1.0",
+    "glob": "^7.0.5",
+    "minimist": "^1.2.0",
+    "mkdirp": "^0.5.1",
+    "mocha": "3.1.1",
+    "monaco": "1.201610192346.0",
+    "monaco-css": "1.2.1",
+    "monaco-languages": "0.6.1",
+    "multimatch": "^2.1.0",
+    "mv": "^2.1.1",
+    "ncp": "^2.0.0",
+    "node-fetch": "1.6.3",
+    "open": "0.0.5",
+    "ora": "^0.2.0",
+    "rimraf": "^2.4.2",
+    "socket.io": "^1.3.6",
+    "ts-node": "1.7.0",
+    "tslint": "3.15.1",
+    "typescript": "2.2.0-dev.20161113",
+    "update-notifier": "1.0.2"
+  },
+  "devDependencies": {
+    "clipboard": "^1.4.2",
+    "css-loader": "^0.24.0",
+    "d3": "^3.5.12",
+    "file-loader": "^0.8.4",
+    "font-awesome": "^4.4.0",
+    "golden-layout": "^1.5.1",
+    "hint.css": "^2.0.0",
+    "http-proxy": "^1.11.1",
+    "jquery": "^2.1.4",
+    "json-loader": "^0.5.4",
+    "less": "^2.5.3",
+    "less-loader": "^2.2.2",
+    "marked": "^0.3.5",
+    "mousetrap": "^1.5.3",
+    "nodemon": "1.11.0",
+    "normalize.css": "^5.0.0",
+    "onresize": "^1.0.1",
+    "react": "15.3.2",
+    "react-dom": "15.3.2",
+    "react-draggable": "2.2.2",
+    "react-modal": "1.2.1",
+    "react-redux": "4.4.5",
+    "react-toggle": "2.1.1",
+    "redux": "3.5.2",
+    "style-loader": "^0.12.3",
+    "toastr": "^2.1.2",
+    "typestyle": "0.9.2",
+    "url-loader": "^0.5.6",
+    "viewerjs": "^0.4.0",
+    "webpack": "^1.11.0",
+    "webpack-dev-server": "^1.10.1"
+  },
+  "engines": {
+    "node": ">=6.0.0",
+    "npm": ">=3.0.0"
+  },
+  "greenkeeper": {
+    "ignore": [
+      "d3",
+      "jquery",
+      "react-modal",
+      "monaco",
+      "typescript"
+    ]
+  }
+}

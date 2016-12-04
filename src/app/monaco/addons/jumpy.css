@@ -1,0 +1,18 @@
+.monaco-jumpy {
+    position: absolute;
+
+    font-size: .7em;
+    font-family: consolas, menlo, monospace;
+
+    font-weight: bold;
+    color: #333;
+    background: white;
+    opacity: .9;
+
+    border-radius: 25%;
+    padding-left: 2px;
+    padding-right: 2px;
+    padding-top: 1px;
+
+    z-index: 1000;
+}

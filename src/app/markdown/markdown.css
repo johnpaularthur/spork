@@ -1,0 +1,20 @@
+.spork-markdown-root {
+    font-size: .7em;
+}
+
+.spork-markdown-root p {
+    margin-top: .5em;
+    margin-bottom: .5em;
+}
+
+.spork-markdown-root a {
+    color: grey;
+}
+
+.spork-markdown-root a:hover {
+    color: white;
+}
+
+.spork-markdown-root ul {
+    margin: 0px;
+}

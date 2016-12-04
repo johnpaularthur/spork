@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<!-- Apply the editor background to body as a style attribute for better initial load look -->
+<body style="background-color: #272822">
+    <!-- socketio -->
+    <script src="/socket.io/socket.io.js"></script>
+
+    <!-- indicator if socket io connection is lost -->
+    <div class="spork-connection-status" style="display: none">
+        <div class="spork-connection-status-activity"></div>
+    </div>
+
+    <!-- Some root level styling -->
+    <style>
+    /* apply a natural box layout model to all elements, but allowing components to change */
+    html {
+      box-sizing: border-box;
+    }
+    *, *:before, *:after {
+      box-sizing: inherit;
+    }
+
+    /* Setup a 100% layout *with no scroll bars* */
+    html, body, #app, #root {
+        height: 100%;
+        overflow: hidden;
+    }
+
+    /* Make react modal appear on top of Code mirror and goldenlayout */
+    .ReactModal__Overlay {
+        z-index: 100;
+    }
+    /* React modal color consistency */
+    .ReactModal__Content.ReactModal__Content--after-open
+    {
+        background-color: #333434 !important;
+        color: white  !important;
+        display: flex !important;
+    }
+    .ReactModal__Content.ReactModal__Content--after-open input
+    {
+        color: white  !important;
+        outline: none;
+        padding: 2px;
+        border: 2px solid #3C3C3C;
+    }
+    </style>
+
+    <!-- Our serverState -->
+    <script src="/serverState.js"></script>
+
+    <!-- Our main javascript -->
+    <script src="/build/bundle.js"></script>
+
+    <!-- Load Monaco -->
+    <script>
+        // The monaco loader will swap to a `node` loader (which tries to read files off disk) if this page is loaded in electron
+        // We don't want that as it breaks our `require` paths
+        // So throw off its *detect* logic
+        // The stuff we delete, we don't need it in our UI anyways 🌹
+        if (typeof 'process' !== 'undefined') {
+            delete process;
+            window.isElectron = true;
+        }
+        if (typeof module !== 'undefined') {
+            delete module;
+        }
+    </script>
+    <script src="vs/loader.js"></script>
+    <script>
+    // Calling it monaco require as we don't want webpack figuring it out! so in our code base we call it monaco require
+    // Still leaving the `require` function available as its probably used internally by monaco still!
+    var monacoRequire = require;
+    monacoRequire(['vs/editor/editor.main'], function() {
+        // At this point we've loaded the monaco-editor-core
+        // It has exposed itself as the `monaco` global
+
+        // Also load all the plugins
+        var monacoPlugins = [
+            'vs/language/css/monaco.contribution',
+            'vs/basic-languages/src/monaco.contribution',
+        ]
+        monacoRequire(monacoPlugins,function(){
+            // Now run `main.tsx` :)
+            monacoReady();
+        });
+	});
+    </script>
+
+    <!-- The main app container -->
+    <div id="app"></div>
+</body>
+
+</html>
