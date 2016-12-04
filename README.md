@@ -6,7 +6,7 @@
 
 Right now, this is an exercise in learning.  I work with data every day and would like to develop a project I can use daily.
 
-This project is getting a jumpstart from the great work that basaratali@gmail.com has done with ALM.  Check out the typescript IDE over at alm-tools.
+This project is getting a jumpstart from the great work that has done with the alm ide.  Check out the typescript IDE over at [alm.tools](http://alm.tools) or [github](https://github.com/alm-tools/alm).
 
 ## Requirements
 

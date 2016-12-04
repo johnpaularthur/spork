@@ -7,3 +7,4 @@ src/**/*.js.map
 src/public/build/**
 .spork
 .DS_Store
+.vscode
