@@ -7,7 +7,8 @@
 .icontainer {
   white-space: nowrap;
     display: inline-block;
-    width: 24px;
+    width: 30px;
+    text-align: center;
     
 }
 /*==[ DEFAULTS ]==============================================================*/
@@ -40,11 +41,14 @@
 
 /*==[ DIRECTORY ICONS ]=======================================================*/
 
-.icon-file-directory { .medium-yellow; }
+.icon-file-directory { .light-yellow; }
 .icon-file-directory.fopen:before {.folder-open-icon;}
 .icon-file-directory.fclose:before {.folder-icon;}
 
 .icon-file-directory {
+
+  // default dot folders
+  &[data-name^="."]:before { color: rgba(149,149,149, .5) }
 
   // Atom
   &[data-name=".atom"]:before { .atom-icon; }
@@ -62,7 +66,7 @@
   &[data-name=".meteor"]:before  { .meteor-icon; }
 
   // Node Modules
-  &[data-name="node_modules"]:before { .node-icon; .medium-green; }
+  &[data-name="node_modules"]:before { color: rgba(149,149,149, .5) }
 
   // Bower Components
   &[data-name="bower_components"]:before { .bower-icon; .auto(bower); }
@@ -1545,6 +1549,11 @@
   &[data-name$=".dfm"]:before            { .pascal-icon;         .medium-blue; }
   &[data-name$=".dpr"]:before            { .pascal-icon;           .dark-blue; }
   &[data-name$=".lpr"]:before            { .pascal-icon;         .dark-purple; }
+
+  // Pentaho files
+  &[data-name$=".kjb"]:before           { .kettle_job;         .medium-yellow; }
+  &[data-name$=".ktr"]:before           { .kettle_transformation;.medium-green; }
+  &[data-name$=".kdb"]:before           { .kettle_db;             .medium-blue; }
 
   // Perl
   &[data-name$=".pl"]:before,

@@ -937,7 +937,7 @@ export namespace TreeNode {
 
             return (
                 <div className={treeStyles.treeItemClassName} style={csx.extend(selectedStyle, inProjectStyle)} key={item.filePath} ref='root' tabIndex={-1} onClick={(evt) => this.props.handleToggleDir(evt,item) }>
-                    <div style={{ marginLeft: depth * 10 }}> <i data-name={item.name} className={icon}></i> {item.name}</div>
+                    <div style={{ marginLeft: depth * 10 }}><span><div className="icontainer"><i data-name={item.name} className={icon}></i></div>{item.name}</span></div>
                 </div>
             );
         }
