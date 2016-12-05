@@ -1,14 +1,32 @@
 import * as csx from '../../../base/csx';
 import {cssRule} from 'typestyle';
 
-export const textColor = '#BBB';
-export let errorColor = '#f92672';
-export let warningColor = '#f6d675'; // Color from CodeMirror `lint.css` warning squiggly color
-export let successColor = '#00c990';
-export let highlightColor = "#6edeef";
-export let selectedBackgroundColor = '#3f3f46';
-export const monokaiBackgroundColor = '#1e1e1e';
-export const monokaiTextColor = "#e6db74"; // The color of strings
+// Base Colors
+export let primaryHighlightColor = '#0AA1C6';
+export let secondaryHighlightColor = '#CF1F5F';
+export let primaryBackgroundColor = '#1E1E1E'
+export let secondaryBackgroundColor = '#252526'
+
+export let primaryTextColor = '#BBBBBB';
+
+export let errorColor = '#CF1F5F';
+export let warningColor = '#938816'; // Color from CodeMirror `lint.css` warning squiggly color
+export let successColor = '#88CF00';
+
+// Tree
+export let selectedTreeBackgroundColor = '#3f3f46';
+
+// Editor
+export let monokaiBackgroundColor = primaryBackgroundColor;
+export let monokaiTextColor = primaryTextColor;
+
+// Tabs
+export let tabHeaderBackgroundColor = '#000000';
+export let tabActiveBackgroundColor = '#1e1e1e';
+export let tabBackgroundColor = '#2d2d2d';
+export let tabActiveTextColor = '#EDEDED';
+export let tabTextColor = '#959595';
+export let tabBorderColor = '#403f3f'
 
 /**
  * FA Icon names used in the application
@@ -52,8 +70,8 @@ export var tabHeader = {
 };
 
 export var tabHeaderActive = {
-    color: highlightColor,
-    borderLeft: `6px solid ${highlightColor}`,
+    color: primaryHighlightColor,
+    borderLeft: `6px solid ${primaryHighlightColor}`,
 };
 
 export var tabHeaderUnsaved = {
@@ -131,7 +149,7 @@ export namespace errorsPanel {
         color: successColor
     }
     export let main = {
-        color: textColor,
+        color: primaryTextColor,
         fontFamily: codeFont.fontFamily,
         padding: '6px',
         overflow: 'hidden',
@@ -303,7 +321,7 @@ export const ellipsis = {
  * body bg
  */
 
-cssRule('body',{ backgroundColor: '#252526 !important'})
+cssRule('body',{ backgroundColor: primaryBackgroundColor + ' !important'})
 
 /**
  * Scroll bar for chrome

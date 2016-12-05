@@ -19,6 +19,7 @@ import {connect} from "react-redux";
 
 import * as baseStyles from "../../styles/themes/current/base";
 
+
 import {Tips} from "./../tips";
 import {Icon} from "../../components/icon";
 import {cast, server} from "../../../socket/socketClient";
@@ -32,6 +33,9 @@ import * as state from "../../state/state";
 import * as pure from "../../../common/pure";
 import * as settings from "../../state/settings";
 import {errorsCache} from "../../globalErrorCacheClient";
+
+
+
 
 /**
  * Singleton + tab state migrated from redux to the local component
@@ -62,8 +66,10 @@ interface GLProps extends React.Props<any>{
 }
 
 /** Some additional styles */
+require("../../styles/themes/current/goldenlayout/themeVars");
 require('../../styles/themes/current/goldenlayout/main.css')
 
+require('../../styles/iconthemes/atom/styles/file-icons.less')
 
 export interface Props {
 }

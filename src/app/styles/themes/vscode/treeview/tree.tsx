@@ -16,14 +16,15 @@ export let treeListStyle = {
     color: '#eee',
     fontSize:'.9rem',
     padding:'0px',
-    fontFamily: 'Open Sans, Segoe UI, sans-serif'
+    fontFamily: 'Open Sans, Segoe UI, sans-serif',
+    backgroundColor: baseStyles.secondaryBackgroundColor
 }
 
 export let treeScrollClassName = typestyle.style({
     borderBottom: '1px solid #333',
     '&:focus': {
         outline: 'none',
-        border: '1px solid ' + baseStyles.highlightColor
+        border: '1px solid ' + baseStyles.primaryHighlightColor
     }
 })
 
@@ -40,11 +41,11 @@ export let treeItemClassName = typestyle.style({
 })
 
 export let treeItemSelectedStyle = {
-    backgroundColor:baseStyles.selectedBackgroundColor,
+    backgroundColor:baseStyles.selectedTreeBackgroundColor,
 }
 
 export let treeItemInProjectStyle = {
-    color: 'rgb(0, 255, 183)',
+    color: baseStyles.primaryHighlightColor,
     opacity: 1,
 }
 
@@ -94,3 +95,31 @@ export let clipboardPathStyle = {
     paddingLeft: '5px',
     paddingBottom: '5px'
 }
+
+/*
+* CSS Rule styles
+*/
+
+typestyle.cssRule('.fa-folder,.fa-folder-open',{
+    color: '#c09553'
+})
+
+typestyle.cssRule('.fa-file-text-o,.fa-file-text',{
+    color: '#755838'
+})
+
+typestyle.cssRule('.fa-github',{
+    color: '#f05033'
+})
+
+typestyle.cssRule('.fa-plane',{
+    color: '#d9c83c'
+})
+
+typestyle.cssRule('.fa-rocket',{
+    color: '#066bb0'
+})
+
+typestyle.cssRule('.fa-database',{
+    color: '#e4c568'
+})

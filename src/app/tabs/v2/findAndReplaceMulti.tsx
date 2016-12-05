@@ -42,7 +42,7 @@ namespace ResultsStyles {
             border: '1px solid grey',
             '&:focus': {
                 outline: 'none',
-                border: '1px solid ' + styles.highlightColor,
+                border: '1px solid ' + styles.primaryHighlightColor,
             }
         }
     );
@@ -53,7 +53,7 @@ namespace ResultsStyles {
             cursor: 'default',
             fontSize: '1.5em',
             fontWeight: 'bold',
-            color: styles.textColor,
+            color: styles.primaryTextColor,
             background: 'black',
             border:'2px solid grey',
         }
@@ -67,7 +67,7 @@ namespace ResultsStyles {
     }
 
     export let selected = {
-        backgroundColor: styles.selectedBackgroundColor
+        backgroundColor: styles.selectedTreeBackgroundColor
     };
 
     export const noFocusClassName = typestyle.style(

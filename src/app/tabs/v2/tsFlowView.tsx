@@ -121,7 +121,7 @@ export class TsFlowView extends ui.BaseComponent<Props, State> {
             <div
                 ref="root"
                 tabIndex={0}
-                style={csx.extend(csx.vertical, csx.flex, csx.newLayerParent, styles.someChildWillScroll, {color: styles.textColor}) }
+                style={csx.extend(csx.vertical, csx.flex, csx.newLayerParent, styles.someChildWillScroll, {color: styles.primaryTextColor}) }
                 onKeyPress={this.handleKey}>
                 <div style={{overflow: 'hidden', padding:'10px', display: 'flex'}}>
 

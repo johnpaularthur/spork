@@ -108,7 +108,7 @@ export class TestedView extends ui.BaseComponent<Props, State> {
                 ref={(root)=>this.ctrls.root = root}
                 onFocus={this.props.onFocused}
                 tabIndex={0}
-                style={csx.extend(csx.vertical, csx.flex, csx.newLayerParent, styles.someChildWillScroll, {color: styles.textColor}) }
+                style={csx.extend(csx.vertical, csx.flex, csx.newLayerParent, styles.someChildWillScroll, {color: styles.primaryTextColor}) }
                 onKeyPress={this.handleKey}>
                 <gls.FlexVertical style={{ overflow: 'hidden', padding: '10px'}}>
                     {this.renderHeader() }
@@ -182,7 +182,7 @@ export class TestedView extends ui.BaseComponent<Props, State> {
                     style={csx.extend({
                         paddingTop: '2px', paddingBottom: '2px', paddingLeft: '2px',
                         color: failing ? styles.errorColor : styles.successColor,
-                        backgroundColor: this.state.selected === fp ? styles.selectedBackgroundColor: 'transparent',
+                        backgroundColor: this.state.selected === fp ? styles.selectedTreeBackgroundColor: 'transparent',
                     }, styles.ellipsis)}
                     onClick={() => this.handleModuleSelected(item) }>
                     <Icon name="file-text-o" /> ({failing ? item.stats.failCount : item.stats.passCount}/{totalThatRan}) {fileName}
@@ -222,7 +222,7 @@ export class TestedView extends ui.BaseComponent<Props, State> {
     renderSuite(suite: types.TestSuiteResult) {
         const color = !!suite.stats.failCount ? styles.errorColor
             : !!suite.stats.passCount ? styles.successColor
-            : styles.highlightColor;
+            : styles.primaryHighlightColor;
         return <div key={makeReactKeyOutOfPosition(suite.testLogPosition.lastPositionInFile)} style={{
             fontSize: '13px',
             border: `1px solid ${color}`,
@@ -253,7 +253,7 @@ export class TestedView extends ui.BaseComponent<Props, State> {
                 style={{
                     color: test.status === types.TestStatus.Success ? styles.successColor
                         : test.status === types.TestStatus.Fail ? styles.errorColor
-                            : styles.highlightColor
+                            : styles.primaryHighlightColor
                 }}>
                 <Icon name={styles.icons.testedTest}/> <span
                 className={TestedViewStyles.headerClassName}

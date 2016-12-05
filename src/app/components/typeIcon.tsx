@@ -135,7 +135,7 @@ namespace DocumentedTypeHeaderStyles {
         {
             fontWeight: 'bold',
             fontSize: '.6rem',
-            color: styles.textColor,
+            color: styles.primaryTextColor,
 
             // Center
             display: 'flex',
@@ -183,7 +183,7 @@ namespace TypeIconLegendStyles {
         {
             fontWeight: 'bold',
             fontSize: '.6rem',
-            color: styles.textColor,
+            color: styles.primaryTextColor,
         });
     export const legendColumnContainer = csx.horizontal;
     export const legendColumn = csx.extend(

@@ -1,5 +1,5 @@
 import * as csx from "../base/csx";
-import {textColor} from "../styles/themes/current/base";
+import {primaryTextColor} from "../styles/themes/current/base";
 import * as React from "react";
 import * as ui from "../ui";
 import * as typestyle from "typestyle";
@@ -20,7 +20,7 @@ const buttonBlackClassName = typestyle.style(
 
         transition: '.2s color, .2s opacity',
 
-        color: textColor,
+        color: primaryTextColor,
         padding: '2px 3px',
         display: 'inline-flex',
         cursor: 'pointer',

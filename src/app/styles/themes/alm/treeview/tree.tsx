@@ -22,7 +22,7 @@ export let treeScrollClassName = typestyle.style({
     borderBottom: '1px solid #333',
     '&:focus': {
         outline: 'none',
-        border: '1px solid ' + baseStyles.highlightColor
+        border: '1px solid ' + baseStyles.primaryHighlightColor
     }
 })
 
@@ -39,7 +39,7 @@ export let treeItemClassName = typestyle.style({
 })
 
 export let treeItemSelectedStyle = {
-    backgroundColor:baseStyles.selectedBackgroundColor,
+    backgroundColor:baseStyles.selectedTreeBackgroundColor,
 }
 
 export let treeItemInProjectStyle = {

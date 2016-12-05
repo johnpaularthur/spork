@@ -1,3 +1,8 @@
+/*
+*  Any style that need to use theme colors and variables should be set in "themeVars.tsx"
+*/
+
+
 /**
  * The hover widget
  */
@@ -65,12 +70,3 @@
     padding-top: 2px;
 }
 
-.monaco-editor.vs-dark.vscode-theme-monokai-themes-Monokai-tmTheme .monaco-editor-background {
-    background-color: #1e1e1e; 
-}
-
-.monaco-editor.vs-dark.vscode-theme-monokai-themes-Monokai-tmTheme .glyph-margin {
-    background-color: #1e1e1e; 
-}
-
-.monaco-editor.vs-dark.vscode-theme-monokai-themes-Monokai-tmTheme .current-line { background-color: rgba(40, 42, 46, 1); }

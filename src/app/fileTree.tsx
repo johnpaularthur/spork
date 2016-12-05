@@ -936,7 +936,7 @@ export namespace TreeNode {
 
             return (
                 <div className={treeStyles.treeItemClassName} style={csx.extend(selectedStyle, inProjectStyle)} key={item.filePath} ref='root' tabIndex={-1} onClick={(evt) => this.props.handleToggleDir(evt,item) }>
-                    <div style={{ marginLeft: depth * 10 }}> <Icon name={icon}/> {item.name}</div>
+                    <div style={{ marginLeft: depth * 10 }}> <Icon name={item.name} className="icon-file-directory"/> {item.name}</div>
                 </div>
             );
         }
@@ -985,7 +985,7 @@ export namespace TreeNode {
             iconName = 'file-image-o';
         }
 
-        const icon = <Icon name={iconName}/>;
+        const icon = <Icon name={this.props.fileName} className="icon-file-text"/>;
 
         return <div>
             {icon} {this.props.fileName}

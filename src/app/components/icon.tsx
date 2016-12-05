@@ -4,6 +4,8 @@ import {BaseComponent} from "../ui";
 import * as ui from "../ui";
 import * as pure from "../../common/pure";
 
+require('../styles/iconthemes/atom/styles/file-icons.less')
+
 export interface Props extends React.HTMLAttributes {
     name: string;
     size?: any; // 1g,2x,3x,4x,5x
@@ -61,7 +63,8 @@ export class Icon extends BaseComponent<Props, State>{
         }
 
         return (
-            <i className={classNames} style={style}></i>
+            //<i className={classNames} style={style}></i>
+            <i data-name={name} className={className}></i>
         );
     }
 }

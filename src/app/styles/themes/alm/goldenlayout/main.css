@@ -1,3 +1,6 @@
+/*
+*  Any style that need to use theme colors should be set in "colors.tsx"
+*/
 
 /* dont support popout / maximize / close all tabs */
 .lm_controls {
@@ -71,11 +74,6 @@
    border: 2px solid;
 }
 
-/* We add a `.spork_selected` class to the tru active tab */
-.lm_tab.spork_selected {
-    color: #6edeef;
-}
-
 /* Further tab styling */
 .lm_tab {
     transition: color .2s;
@@ -92,8 +90,8 @@
  */
 .lm_content {
     display: flex;
-    /* also make the background like code mirror monokai */
-    background-color: #272822;
+    /* color is set in colors.tsx */
+    
 }
 
 /**
@@ -129,5 +127,5 @@
     left:0;
     display: flex;
     pointer-events: none;
-    background-color: #272822;
+    /* color is set in colors.tsx */
 }

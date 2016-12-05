@@ -26,7 +26,7 @@ namespace SemanticViewStyles {
         background: '#343333',
 
         // Font
-        color: '#BBB',
+        color: styles.primaryTextColor,
         fontSize: '.6rem',
         fontWeight: 'bold',
 

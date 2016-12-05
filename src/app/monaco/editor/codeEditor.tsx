@@ -21,6 +21,7 @@ import * as monacoStyles from "../../styles/themes/current/monaco/main";
 // The monokai theme
 require('./monokai.css');
 // Any other style modifications
+require("../../styles/themes/current/monaco/themeVars");
 require('../../styles/themes/current/monaco/codeEditor.css');
 
 /**

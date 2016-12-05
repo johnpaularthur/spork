@@ -1,7 +1,12 @@
+/*
+*  Any style that need to use theme colors and variables should be set in "themeVars.tsx"
+*/
+
 /* dont support popout / maximize / close all tabs */
 .lm_controls {
     display: none;
 }
+
 /*
  * The vertical/horizontal drag handle was too tall/wide
  * It was interfering with tab selection (vertical) and scrolling (horizontal)
@@ -10,6 +15,7 @@
     top: 0px;
     height: 5px;
 }
+
 .lm_splitter.lm_horizontal .lm_drag_handle {
     left: 0px;
     width: 5px;
@@ -20,6 +26,7 @@
     background-image: none;
     top: 2px;
 }
+
 .lm_close_tab:before {
     content: '\F00D'; /* cross */
     font-family: FontAwesome;
@@ -37,9 +44,11 @@
     padding: 2px 5px;
     border-radius: 50px;
 }
+
 .lm_active .spork_jumpIndex {
   background: #ee7813;
 }
+
 /* Add a tab jump move help */
 .spork_tabMove {
     position: absolute;
@@ -55,9 +64,11 @@
     text-align: center;
     opacity: .8;
 }
+
 .spork_tabMove div {
     padding: 5px 0px;
 }
+
 .spork_tabMove .keyStrokeStyle {
    font-size: 0.9rem;
    background: #111;
@@ -69,43 +80,25 @@
    border: 2px solid;
 }
 
-/* We add a `.spork_selected` class to the tru active tab */
-.lm_tab.spork_selected {
-    color: #6edeef;    
-}
-
 /* Further tab styling */
 .lm_tab {
     transition: color .2s;
-    
 }
 
 .lm_header {
     height: 29px !important;
-    background: #252526;
     overflow: visible !important;
 }
 
 .lm_header .lm_tab {
     font-family: 'Helvetica', 'Segoe UI', sans-serif;
-    background: #2d2d2d;
-    color: #959595;
     height: 24px;
     line-height: 24px;
     text-align: center;
     margin-right: 0px;
     box-shadow: none;
-    border-right: 1px solid #403f3f;
-
 }
-.lm_items {
-    border-top: 1px solid #403f3f;
-} 
 
-.lm_tab.lm_active {
-    color: #EEE;
-    background: #1e1e1e;
-}
 .lm_header .lm_tab.lm_active{
     box-shadow: none;
 }
@@ -117,8 +110,6 @@
  */
 .lm_content {
     display: flex;
-    /* also make the background like code mirror monokai */
-    background-color: #1e1e1e;
 }
 
 /**
@@ -140,6 +131,7 @@
  */
 .lm_tab.unsaved {
 }
+
 .lm_tab.unsaved .lm_close_tab:before {
     content: '\F1CD'; /* life-ring */
     font-family: FontAwesome;
@@ -154,5 +146,4 @@
     left:0;
     display: flex;
     pointer-events: none;
-    background-color: #1e1e1e;
 }

@@ -109,7 +109,7 @@ export function setup(editor: Editor): { dispose: () => void } {
                     color:
                         result.status === types.TestStatus.Success ? styles.successColor
                         : result.status === types.TestStatus.Fail ? styles.errorColor
-                        : styles.highlightColor
+                        : styles.primaryHighlightColor
                 }}
                 data-hint={
                     result.status === types.TestStatus.Success ? "Test Success"

@@ -7,6 +7,7 @@
     -moz-osx-font-smoothing: grayscale;
 
     /* our error color scheme */
+    /* should be the same as errorColor in base.tsx */
     color: #f92672;
 
     /* To make it consistent with override gutter */
