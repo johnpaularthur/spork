@@ -9,6 +9,7 @@ import * as utils from "../common/utils";
 
 import * as baseStyles from "./styles/themes/current/base";
 import * as treeStyles from "./styles/themes/current/treeview/tree";
+require('./styles/iconthemes/atom/styles/file-icons.less')
 
 import * as state from "./state/state";
 import {connect} from "react-redux";
@@ -930,13 +931,13 @@ export namespace TreeNode {
 
         render(){
             let {item,depth,expanded} = this.props;
-            let icon = expanded ? 'folder-open' : 'folder';
+            let icon = expanded ? 'icon-file-directory fopen' : 'icon-file-directory fclose';
             let selectedStyle = this.props.selected ? treeStyles.treeItemSelectedStyle : {};
             let inProjectStyle = this.props.activeProjectFilePathTruthTable[item.filePath] ? treeStyles.treeItemInProjectStyle : {};
 
             return (
                 <div className={treeStyles.treeItemClassName} style={csx.extend(selectedStyle, inProjectStyle)} key={item.filePath} ref='root' tabIndex={-1} onClick={(evt) => this.props.handleToggleDir(evt,item) }>
-                    <div style={{ marginLeft: depth * 10 }}> <Icon name={item.name} className="icon-file-directory"/> {item.name}</div>
+                    <div style={{ marginLeft: depth * 10 }}> <i data-name={item.name} className={icon}></i> {item.name}</div>
                 </div>
             );
         }
@@ -985,10 +986,10 @@ export namespace TreeNode {
             iconName = 'file-image-o';
         }
 
-        const icon = <Icon name={this.props.fileName} className="icon-file-text"/>;
+        const icon = <i data-name={this.props.fileName} className="icon-file-text"></i>;
 
         return <div>
-            {icon} {this.props.fileName}
+            <span><div className="icontainer">{icon}</div>{this.props.fileName}</span>
         </div>;
       }
     }

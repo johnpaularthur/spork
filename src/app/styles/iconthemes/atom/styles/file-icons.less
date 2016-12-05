@@ -4,8 +4,11 @@
 @import "items.less";
 @import "ui-variables";
 
-.testme {
-  background: green;
+.icontainer {
+  white-space: nowrap;
+    display: inline-block;
+    width: 24px;
+    
 }
 /*==[ DEFAULTS ]==============================================================*/
 
@@ -37,7 +40,9 @@
 
 /*==[ DIRECTORY ICONS ]=======================================================*/
 
-.icon-file-directory:before{ .folder-icon;}
+.icon-file-directory { .medium-yellow; }
+.icon-file-directory.fopen:before {.folder-open-icon;}
+.icon-file-directory.fclose:before {.folder-icon;}
 
 .icon-file-directory {
 
