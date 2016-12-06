@@ -1,0 +1,9 @@
+<?xml version="1.0"?> 
+<quiz> 
+<qanda seq="1"> 
+<question> Who was the forty-second president of the U.S.A.? </question> 
+<answer> William Jefferson Clinton </answer>
+<directory>&#x2f;public&#x2f;Utility</directory> 
+</qanda>
+<!-- Note: We need to add more questions later.--> 
+</quiz>

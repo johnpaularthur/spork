@@ -1,0 +1,1058 @@
+  <info>
+    <name>hive_temp_cleanup</name>
+    <description/>
+    <extended_description/>
+    <trans_version/>
+    <trans_type>Normal</trans_type>
+    <trans_status>0</trans_status>
+    <directory>&#x2f;public&#x2f;Utility</directory>
+    <parameters>
+    </parameters>
+    <log>
+<trans-log-table><connection/>
+<schema/>
+<table/>
+<size_limit_lines/>
+<interval/>
+<timeout_days/>
+<field><id>ID_BATCH</id><enabled>Y</enabled><name>ID_BATCH</name></field><field><id>CHANNEL_ID</id><enabled>Y</enabled><name>CHANNEL_ID</name></field><field><id>TRANSNAME</id><enabled>Y</enabled><name>TRANSNAME</name></field><field><id>STATUS</id><enabled>Y</enabled><name>STATUS</name></field><field><id>LINES_READ</id><enabled>Y</enabled><name>LINES_READ</name><subject/></field><field><id>LINES_WRITTEN</id><enabled>Y</enabled><name>LINES_WRITTEN</name><subject/></field><field><id>LINES_UPDATED</id><enabled>Y</enabled><name>LINES_UPDATED</name><subject/></field><field><id>LINES_INPUT</id><enabled>Y</enabled><name>LINES_INPUT</name><subject/></field><field><id>LINES_OUTPUT</id><enabled>Y</enabled><name>LINES_OUTPUT</name><subject/></field><field><id>LINES_REJECTED</id><enabled>Y</enabled><name>LINES_REJECTED</name><subject/></field><field><id>ERRORS</id><enabled>Y</enabled><name>ERRORS</name></field><field><id>STARTDATE</id><enabled>Y</enabled><name>STARTDATE</name></field><field><id>ENDDATE</id><enabled>Y</enabled><name>ENDDATE</name></field><field><id>LOGDATE</id><enabled>Y</enabled><name>LOGDATE</name></field><field><id>DEPDATE</id><enabled>Y</enabled><name>DEPDATE</name></field><field><id>REPLAYDATE</id><enabled>Y</enabled><name>REPLAYDATE</name></field><field><id>LOG_FIELD</id><enabled>Y</enabled><name>LOG_FIELD</name></field><field><id>EXECUTING_SERVER</id><enabled>N</enabled><name>EXECUTING_SERVER</name></field><field><id>EXECUTING_USER</id><enabled>N</enabled><name>EXECUTING_USER</name></field><field><id>CLIENT</id><enabled>N</enabled><name>CLIENT</name></field></trans-log-table>
+<perf-log-table><connection/>
+<schema/>
+<table/>
+<interval/>
+<timeout_days/>
+<field><id>ID_BATCH</id><enabled>Y</enabled><name>ID_BATCH</name></field><field><id>SEQ_NR</id><enabled>Y</enabled><name>SEQ_NR</name></field><field><id>LOGDATE</id><enabled>Y</enabled><name>LOGDATE</name></field><field><id>TRANSNAME</id><enabled>Y</enabled><name>TRANSNAME</name></field><field><id>STEPNAME</id><enabled>Y</enabled><name>STEPNAME</name></field><field><id>STEP_COPY</id><enabled>Y</enabled><name>STEP_COPY</name></field><field><id>LINES_READ</id><enabled>Y</enabled><name>LINES_READ</name></field><field><id>LINES_WRITTEN</id><enabled>Y</enabled><name>LINES_WRITTEN</name></field><field><id>LINES_UPDATED</id><enabled>Y</enabled><name>LINES_UPDATED</name></field><field><id>LINES_INPUT</id><enabled>Y</enabled><name>LINES_INPUT</name></field><field><id>LINES_OUTPUT</id><enabled>Y</enabled><name>LINES_OUTPUT</name></field><field><id>LINES_REJECTED</id><enabled>Y</enabled><name>LINES_REJECTED</name></field><field><id>ERRORS</id><enabled>Y</enabled><name>ERRORS</name></field><field><id>INPUT_BUFFER_ROWS</id><enabled>Y</enabled><name>INPUT_BUFFER_ROWS</name></field><field><id>OUTPUT_BUFFER_ROWS</id><enabled>Y</enabled><name>OUTPUT_BUFFER_ROWS</name></field></perf-log-table>
+<channel-log-table><connection/>
+<schema/>
+<table/>
+<timeout_days/>
+<field><id>ID_BATCH</id><enabled>Y</enabled><name>ID_BATCH</name></field><field><id>CHANNEL_ID</id><enabled>Y</enabled><name>CHANNEL_ID</name></field><field><id>LOG_DATE</id><enabled>Y</enabled><name>LOG_DATE</name></field><field><id>LOGGING_OBJECT_TYPE</id><enabled>Y</enabled><name>LOGGING_OBJECT_TYPE</name></field><field><id>OBJECT_NAME</id><enabled>Y</enabled><name>OBJECT_NAME</name></field><field><id>OBJECT_COPY</id><enabled>Y</enabled><name>OBJECT_COPY</name></field><field><id>REPOSITORY_DIRECTORY</id><enabled>Y</enabled><name>REPOSITORY_DIRECTORY</name></field><field><id>FILENAME</id><enabled>Y</enabled><name>FILENAME</name></field><field><id>OBJECT_ID</id><enabled>Y</enabled><name>OBJECT_ID</name></field><field><id>OBJECT_REVISION</id><enabled>Y</enabled><name>OBJECT_REVISION</name></field><field><id>PARENT_CHANNEL_ID</id><enabled>Y</enabled><name>PARENT_CHANNEL_ID</name></field><field><id>ROOT_CHANNEL_ID</id><enabled>Y</enabled><name>ROOT_CHANNEL_ID</name></field></channel-log-table>
+<step-log-table><connection/>
+<schema/>
+<table/>
+<timeout_days/>
+<field><id>ID_BATCH</id><enabled>Y</enabled><name>ID_BATCH</name></field><field><id>CHANNEL_ID</id><enabled>Y</enabled><name>CHANNEL_ID</name></field><field><id>LOG_DATE</id><enabled>Y</enabled><name>LOG_DATE</name></field><field><id>TRANSNAME</id><enabled>Y</enabled><name>TRANSNAME</name></field><field><id>STEPNAME</id><enabled>Y</enabled><name>STEPNAME</name></field><field><id>STEP_COPY</id><enabled>Y</enabled><name>STEP_COPY</name></field><field><id>LINES_READ</id><enabled>Y</enabled><name>LINES_READ</name></field><field><id>LINES_WRITTEN</id><enabled>Y</enabled><name>LINES_WRITTEN</name></field><field><id>LINES_UPDATED</id><enabled>Y</enabled><name>LINES_UPDATED</name></field><field><id>LINES_INPUT</id><enabled>Y</enabled><name>LINES_INPUT</name></field><field><id>LINES_OUTPUT</id><enabled>Y</enabled><name>LINES_OUTPUT</name></field><field><id>LINES_REJECTED</id><enabled>Y</enabled><name>LINES_REJECTED</name></field><field><id>ERRORS</id><enabled>Y</enabled><name>ERRORS</name></field><field><id>LOG_FIELD</id><enabled>N</enabled><name>LOG_FIELD</name></field></step-log-table>
+<metrics-log-table><connection/>
+<schema/>
+<table/>
+<timeout_days/>
+<field><id>ID_BATCH</id><enabled>Y</enabled><name>ID_BATCH</name></field><field><id>CHANNEL_ID</id><enabled>Y</enabled><name>CHANNEL_ID</name></field><field><id>LOG_DATE</id><enabled>Y</enabled><name>LOG_DATE</name></field><field><id>METRICS_DATE</id><enabled>Y</enabled><name>METRICS_DATE</name></field><field><id>METRICS_CODE</id><enabled>Y</enabled><name>METRICS_CODE</name></field><field><id>METRICS_DESCRIPTION</id><enabled>Y</enabled><name>METRICS_DESCRIPTION</name></field><field><id>METRICS_SUBJECT</id><enabled>Y</enabled><name>METRICS_SUBJECT</name></field><field><id>METRICS_TYPE</id><enabled>Y</enabled><name>METRICS_TYPE</name></field><field><id>METRICS_VALUE</id><enabled>Y</enabled><name>METRICS_VALUE</name></field></metrics-log-table>
+    </log>
+    <maxdate>
+      <connection/>
+      <table/>
+      <field/>
+      <offset>0.0</offset>
+      <maxdiff>0.0</maxdiff>
+    </maxdate>
+    <size_rowset>10000</size_rowset>
+    <sleep_time_empty>50</sleep_time_empty>
+    <sleep_time_full>50</sleep_time_full>
+    <unique_connections>N</unique_connections>
+    <feedback_shown>Y</feedback_shown>
+    <feedback_size>50000</feedback_size>
+    <using_thread_priorities>Y</using_thread_priorities>
+    <shared_objects_file/>
+    <capture_step_performance>N</capture_step_performance>
+    <step_performance_capturing_delay>1000</step_performance_capturing_delay>
+    <step_performance_capturing_size_limit>100</step_performance_capturing_size_limit>
+    <dependencies>
+    </dependencies>
+    <partitionschemas>
+        <partitionschema>
+          <name>2 Partition Dynamic Schema</name>
+          <dynamic>Y</dynamic>
+          <partitions_per_slave>2</partitions_per_slave>
+        </partitionschema>
+        <partitionschema>
+          <name>4 Partition Dynamic Schema</name>
+          <dynamic>Y</dynamic>
+          <partitions_per_slave>4</partitions_per_slave>
+        </partitionschema>
+        <partitionschema>
+          <name>Dynamic Partition Schema</name>
+          <dynamic>Y</dynamic>
+          <partitions_per_slave/>
+        </partitionschema>
+        <partitionschema>
+          <name>PartitionSchema</name>
+          <dynamic>Y</dynamic>
+          <partitions_per_slave>1</partitions_per_slave>
+        </partitionschema>
+        <partitionschema>
+          <name>Test-Partition</name>
+          <partition>            <id>P1</id>
+          </partition>          <partition>            <id>P2</id>
+          </partition>          <partition>            <id>P3</id>
+          </partition>          <partition>            <id>P4</id>
+          </partition>          <dynamic>Y</dynamic>
+          <partitions_per_slave>4</partitions_per_slave>
+        </partitionschema>
+    </partitionschemas>
+    <slaveservers>
+         <slaveserver><name>DI Server</name><hostname>localhost</hostname><port>9080</port><webAppName>pentaho-di</webAppName><username>joe</username><password>Encrypted 2be98afc86aa7f2e4bb18bd63c99dbdde</password><proxy_hostname/><proxy_port/><non_proxy_hosts/><master>N</master></slaveserver>
+         <slaveserver><name>Jos 10.0.0.169</name><hostname>10.0.0.169</hostname><port>8081</port><webAppName/><username>cluster</username><password>Encrypted 2be98afc86aa7f2e4cb1aa265cd86aac8</password><proxy_hostname/><proxy_port/><non_proxy_hosts/><master>N</master></slaveserver>
+         <slaveserver><name>Master</name><hostname>localhost</hostname><port>8081</port><webAppName/><username>cluster</username><password>Encrypted 2be98afc86aa7f2e4cb1aa265cd86aac8</password><proxy_hostname/><proxy_port/><non_proxy_hosts/><master>Y</master></slaveserver>
+         <slaveserver><name>PDI 4.0 Repository Server</name><hostname>10.127.2.7</hostname><port>9080</port><webAppName/><username>james.scollard</username><password>Encrypted 2be98afc86aa7f2c0a849a27cfe80ab9b</password><proxy_hostname/><proxy_port/><non_proxy_hosts/><master>Y</master></slaveserver>
+         <slaveserver><name>Pentaho 4.3 Production</name><hostname>10.126.2.10</hostname><port>9080</port><webAppName>pentaho-di</webAppName><username>chris.deptula</username><password>Encrypted 2be98afc86aa7f2e48e1da1228ec3fd9b</password><proxy_hostname/><proxy_port/><non_proxy_hosts/><master>Y</master></slaveserver>
+         <slaveserver><name>Pentaho DP DEMO</name><hostname>dpdem01cr01-demoetl.healthmedia.com</hostname><port>9080</port><webAppName>pentaho-di</webAppName><username>admin</username><password>Encrypted 2be98afc86aa7f2e4cb79bd75dd80aace</password><proxy_hostname/><proxy_port/><non_proxy_hosts/><master>Y</master></slaveserver>
+         <slaveserver><name>Pentaho DP DEVETL</name><hostname>65.17.214.135</hostname><port>9080</port><webAppName>pentaho-di</webAppName><username>admin</username><password>Encrypted 2be98afc80ec28481bf15ff218fc3ff8b</password><proxy_hostname/><proxy_port/><non_proxy_hosts/><master>Y</master></slaveserver>
+         <slaveserver><name>Pentaho Development Server</name><hostname>172.16.10.77</hostname><port>9080</port><webAppName/><username>admin</username><password>Encrypted 2be98afc86aa7f2e4cb79bd75dd80aace</password><proxy_hostname/><proxy_port/><non_proxy_hosts/><master>N</master></slaveserver>
+         <slaveserver><name>Pentaho Development Server 8081</name><hostname>172.16.10.77</hostname><port>8081</port><webAppName/><username>cluster</username><password>Encrypted 2be98afc86aa7f2e4cb1aa265cd86aac8</password><proxy_hostname/><proxy_port/><non_proxy_hosts/><master>N</master></slaveserver>
+         <slaveserver><name>Pentaho Prod Server</name><hostname>65.17.214.200</hostname><port>15080</port><webAppName>pentaho-di</webAppName><username>admin</username><password>Encrypted 2be98afc86aa7f2e4cb79bd75dd80aace</password><proxy_hostname/><proxy_port/><non_proxy_hosts/><master>N</master></slaveserver>
+         <slaveserver><name>QA test</name><hostname>10.127.15.112</hostname><port>9080</port><webAppName>pentaho-di</webAppName><username>onkar.sawant</username><password>Encrypted 2be98afc86aa7f2e4cb1caa7f8cc2fe8e</password><proxy_hostname/><proxy_port/><non_proxy_hosts/><master>N</master></slaveserver>
+         <slaveserver><name>QArepo</name><hostname>10.127.15.111</hostname><port>9081</port><webAppName>pentaho-di</webAppName><username>onkar.sawant</username><password>Encrypted 2be98afc86aa7f2e4cb1caa7f8cc2fe8e</password><proxy_hostname/><proxy_port/><non_proxy_hosts/><master>N</master></slaveserver>
+         <slaveserver><name>QArepo5.2.1</name><hostname>10.127.15.56</hostname><port>9080</port><webAppName>pentaho-di</webAppName><username>onkar.sawant</username><password>Encrypted 2be98afc86aa7f2e4ae1da1228ec3fa9b</password><proxy_hostname/><proxy_port/><non_proxy_hosts/><master>N</master></slaveserver>
+         <slaveserver><name>Slave3</name><hostname>localhost</hostname><port>8084</port><webAppName/><username>cluster</username><password>Encrypted 2be98afc86aa7f2e4cb1aa265cd86aac8</password><proxy_hostname/><proxy_port/><non_proxy_hosts/><master>N</master></slaveserver>
+         <slaveserver><name>UAT</name><hostname>10.126.12.101</hostname><port>9080</port><webAppName>pentaho-di</webAppName><username>edo</username><password>Encrypted 2be98afc86aa7f281af16fc2093c3fd9b</password><proxy_hostname/><proxy_port/><non_proxy_hosts/><master>N</master></slaveserver>
+         <slaveserver><name>UAT5</name><hostname>10.126.12.101</hostname><port>9081</port><webAppName>pentaho-di</webAppName><username>onkar.sawant</username><password>Encrypted 2be98afc86aa782d1a811a7228ec3fa9b</password><proxy_hostname/><proxy_port/><non_proxy_hosts/><master>N</master></slaveserver>
+         <slaveserver><name>depdev01cr01-devetl</name><hostname>65.17.214.135</hostname><port>8081</port><webAppName/><username>cluster</username><password>Encrypted 2be98afc86aa7f2e4cb1aa265cd86aac8</password><proxy_hostname/><proxy_port/><non_proxy_hosts/><master>N</master></slaveserver>
+         <slaveserver><name>devpentaho</name><hostname>devpentaho.healthmedia.com</hostname><port>9080</port><webAppName>pentaho-di</webAppName><username>mcasper</username><password>Encrypted 2be98afc86a96ba85bf1cba7ff897aad6</password><proxy_hostname/><proxy_port/><non_proxy_hosts/><master>N</master></slaveserver>
+         <slaveserver><name>di_server</name><hostname>10.16.25.182</hostname><port>9080</port><webAppName>pentaho-di</webAppName><username>admin</username><password>Encrypted 2be98afc86aa7f2e4cb79bd75dd80aace</password><proxy_hostname/><proxy_port/><non_proxy_hosts/><master>N</master></slaveserver>
+         <slaveserver><name>henchman-0</name><hostname>10.60.2.30</hostname><port>8080</port><webAppName/><username>slave</username><password>Encrypted 2be98afc86aa7f2e49b4aa064fe9aff9b</password><proxy_hostname/><proxy_port/><non_proxy_hosts/><master>Y</master></slaveserver>
+         <slaveserver><name>henchman-c02v040</name><hostname>10.127.2.40</hostname><port>8080</port><webAppName/><username>slave</username><password>Encrypted 2be98afc86aa7f2e49b4aa064fe9aff9b</password><proxy_hostname/><proxy_port/><non_proxy_hosts/><master>Y</master></slaveserver>
+         <slaveserver><name>henchman-c02v041</name><hostname>10.127.2.41</hostname><port>8080</port><webAppName/><username>slave</username><password>Encrypted 2be98afc86aa7f2e49b4aa064fe9aff9b</password><proxy_hostname/><proxy_port/><non_proxy_hosts/><master>Y</master></slaveserver>
+         <slaveserver><name>henchman-c02v042</name><hostname>10.127.2.42</hostname><port>8080</port><webAppName/><username>minion</username><password>Encrypted 2be98afc86aa7f2e49b4aa064fe9aff9b</password><proxy_hostname/><proxy_port/><non_proxy_hosts/><master>Y</master></slaveserver>
+         <slaveserver><name>henchman-c02v043</name><hostname>10.127.2.43</hostname><port>8080</port><webAppName/><username>minion</username><password>Encrypted 2be98afc86aa7f2e49b4aa064fe9aff9b</password><proxy_hostname/><proxy_port/><non_proxy_hosts/><master>Y</master></slaveserver>
+         <slaveserver><name>henchman-c02v044</name><hostname>10.127.2.44</hostname><port>8080</port><webAppName/><username>minion</username><password>Encrypted 2be98afc86aa7f2e49b4aa064fe9aff9b</password><proxy_hostname/><proxy_port/><non_proxy_hosts/><master>Y</master></slaveserver>
+         <slaveserver><name>localhost</name><hostname>localhost</hostname><port>9090</port><webAppName>pentaho-di</webAppName><username>cluster</username><password>Encrypted 2be98afc86aa7f2e4cb1aa265cd86aac8</password><proxy_hostname/><proxy_port/><non_proxy_hosts/><master>Y</master></slaveserver>
+         <slaveserver><name>minion-0</name><hostname>10.60.2.31</hostname><port>8080</port><webAppName/><username>slave</username><password>Encrypted 2be98afc86aa7f2e49b4aa064fe9aff9b</password><proxy_hostname/><proxy_port/><non_proxy_hosts/><master>N</master></slaveserver>
+         <slaveserver><name>minion-c03v101</name><hostname>10.127.3.101</hostname><port>8080</port><webAppName/><username>minion</username><password>Encrypted 2be98afc86aa7f2e49b4aa064fe9aff9b</password><proxy_hostname/><proxy_port/><non_proxy_hosts/><master>N</master></slaveserver>
+         <slaveserver><name>minion-c03v102</name><hostname>10.127.3.102</hostname><port>8080</port><webAppName/><username>minion</username><password>Encrypted 2be98afc86aa7f2e49b4aa064fe9aff9b</password><proxy_hostname/><proxy_port/><non_proxy_hosts/><master>N</master></slaveserver>
+         <slaveserver><name>minion-c03v103</name><hostname>10.127.3.103</hostname><port>8080</port><webAppName/><username>minion</username><password>Encrypted 2be98afc86aa7f2e49b4aa064fe9aff9b</password><proxy_hostname/><proxy_port/><non_proxy_hosts/><master>N</master></slaveserver>
+         <slaveserver><name>minion-c03v104</name><hostname>10.127.2.104</hostname><port>8080</port><webAppName/><username>minion</username><password>Encrypted 2be98afc86aa7f2e49b4aa064fe9aff9b</password><proxy_hostname/><proxy_port/><non_proxy_hosts/><master>N</master></slaveserver>
+         <slaveserver><name>minion-c03v105</name><hostname>10.127.3.105</hostname><port>8080</port><webAppName/><username>minion</username><password>Encrypted 2be98afc86aa7f2e49b4aa064fe9aff9b</password><proxy_hostname/><proxy_port/><non_proxy_hosts/><master>N</master></slaveserver>
+         <slaveserver><name>minion-c04v151</name><hostname>10.127.4.151</hostname><port>8080</port><webAppName/><username>minion</username><password>Encrypted 2be98afc86aa7f2e49b4aa064fe9aff9b</password><proxy_hostname/><proxy_port/><non_proxy_hosts/><master>N</master></slaveserver>
+         <slaveserver><name>minion-c04v152</name><hostname>10.127.4.152</hostname><port>8080</port><webAppName/><username>minion</username><password>Encrypted 2be98afc86aa7f2e49b4aa064fe9aff9b</password><proxy_hostname/><proxy_port/><non_proxy_hosts/><master>N</master></slaveserver>
+         <slaveserver><name>minion-c04v153</name><hostname>10.127.4.153</hostname><port>8080</port><webAppName/><username>minion</username><password>Encrypted 2be98afc86aa7f2e49b4aa064fe9aff9b</password><proxy_hostname/><proxy_port/><non_proxy_hosts/><master>N</master></slaveserver>
+         <slaveserver><name>minion-c04v154</name><hostname>10.127.4.154</hostname><port>8080</port><webAppName/><username>minion</username><password>Encrypted 2be98afc86aa7f2e49b4aa064fe9aff9b</password><proxy_hostname/><proxy_port/><non_proxy_hosts/><master>N</master></slaveserver>
+         <slaveserver><name>minion-c04v155</name><hostname>10.127.4.155</hostname><port>8080</port><webAppName/><username>minion</username><password>Encrypted 2be98afc86aa7f2e49b4aa064fe9aff9b</password><proxy_hostname/><proxy_port/><non_proxy_hosts/><master>N</master></slaveserver>
+         <slaveserver><name>minion-c05v101</name><hostname>10.127.5.101</hostname><port>8080</port><webAppName/><username>minion</username><password>Encrypted 2be98afc86aa7f2e49b4aa064fe9aff9b</password><proxy_hostname/><proxy_port/><non_proxy_hosts/><master>N</master></slaveserver>
+         <slaveserver><name>minion-c05v102</name><hostname>10.127.5.102</hostname><port>8080</port><webAppName/><username>minion</username><password>Encrypted 2be98afc86aa7f2e49b4aa064fe9aff9b</password><proxy_hostname/><proxy_port/><non_proxy_hosts/><master>N</master></slaveserver>
+         <slaveserver><name>minion-c06v101</name><hostname>10.127.7.101</hostname><port>8080</port><webAppName/><username>minion</username><password>Encrypted 2be98afc86aa7f2e49b4aa064fe9aff9b</password><proxy_hostname/><proxy_port/><non_proxy_hosts/><master>N</master></slaveserver>
+         <slaveserver><name>minion-c06v102</name><hostname>10.127.7.102</hostname><port>8080</port><webAppName/><username>minion</username><password>Encrypted 2be98afc86aa7f2e49b4aa064fe9aff9b</password><proxy_hostname/><proxy_port/><non_proxy_hosts/><master>N</master></slaveserver>
+         <slaveserver><name>minion-c06v103</name><hostname>10.127.7.103</hostname><port>8080</port><webAppName/><username>minion</username><password>Encrypted 2be98afc86aa7f2e49b4aa064fe9aff9b</password><proxy_hostname/><proxy_port/><non_proxy_hosts/><master>N</master></slaveserver>
+         <slaveserver><name>minion-c06v104</name><hostname>10.127.7.104</hostname><port>8080</port><webAppName/><username>minion</username><password>Encrypted 2be98afc86aa7f2e49b4aa064fe9aff9b</password><proxy_hostname/><proxy_port/><non_proxy_hosts/><master>N</master></slaveserver>
+         <slaveserver><name>minion-c06v105</name><hostname>10.127.7.105</hostname><port>8080</port><webAppName/><username>minion</username><password>Encrypted 2be98afc86aa7f2e49b4aa064fe9aff9b</password><proxy_hostname/><proxy_port/><non_proxy_hosts/><master>N</master></slaveserver>
+         <slaveserver><name>pentaho production</name><hostname>10.40.2.28</hostname><port>9080</port><webAppName>pentaho-di</webAppName><username>james.scollard</username><password>Encrypted 2be98afc86aa7f2b0ae0bbc71cdc2f79b</password><proxy_hostname/><proxy_port/><non_proxy_hosts/><master>Y</master></slaveserver>
+         <slaveserver><name>slave1</name><hostname>localhost</hostname><port>8081</port><webAppName/><username>cluster</username><password>Encrypted 2be98afc86aa7f2e4cb1aa265cd86aac8</password><proxy_hostname/><proxy_port/><non_proxy_hosts/><master>N</master></slaveserver>
+         <slaveserver><name>slave2</name><hostname>localhost</hostname><port>8082</port><webAppName/><username>cluster</username><password>Encrypted 2be98afc86aa7f2e4cb1aa265cd86aac8</password><proxy_hostname/><proxy_port/><non_proxy_hosts/><master>N</master></slaveserver>
+         <slaveserver><name>staging pentaho 4.0</name><hostname>10.60.2.28</hostname><port>9080</port><webAppName/><username>james.scollard</username><password>Encrypted 2be98afc86aa7f2b0ae0bbc71cdc2f79b</password><proxy_hostname/><proxy_port/><non_proxy_hosts/><master>Y</master></slaveserver>
+         <slaveserver><name>test</name><hostname>10.127.15.111</hostname><port>8080</port><webAppName/><username/><password>Encrypted </password><proxy_hostname/><proxy_port/><non_proxy_hosts/><master>N</master></slaveserver>
+    </slaveservers>
+    <clusterschemas>
+        <clusterschema>
+          <name>ClusterSchema</name>
+          <base_port>40000</base_port>
+          <sockets_buffer_size>2000</sockets_buffer_size>
+          <sockets_flush_interval>5000</sockets_flush_interval>
+          <sockets_compressed>Y</sockets_compressed>
+          <dynamic>N</dynamic>
+          <slaveservers>
+            <name>Master</name>
+            <name>slave1</name>
+            <name>slave2</name>
+          </slaveservers>
+        </clusterschema>
+        <clusterschema>
+          <name>Database Cluster</name>
+          <base_port>40000</base_port>
+          <sockets_buffer_size>2000</sockets_buffer_size>
+          <sockets_flush_interval>5000</sockets_flush_interval>
+          <sockets_compressed>N</sockets_compressed>
+          <dynamic>N</dynamic>
+          <slaveservers>
+            <name>henchman-c02v042</name>
+            <name>minion-c06v101</name>
+            <name>minion-c06v102</name>
+            <name>minion-c06v103</name>
+            <name>minion-c06v104</name>
+            <name>minion-c06v105</name>
+          </slaveservers>
+        </clusterschema>
+        <clusterschema>
+          <name>Grid Cluster</name>
+          <base_port>40000</base_port>
+          <sockets_buffer_size>2000</sockets_buffer_size>
+          <sockets_flush_interval>5000</sockets_flush_interval>
+          <sockets_compressed>N</sockets_compressed>
+          <dynamic>N</dynamic>
+          <slaveservers>
+            <name>henchman-c02v043</name>
+            <name>minion-c04v151</name>
+            <name>minion-c04v152</name>
+            <name>minion-c04v153</name>
+            <name>minion-c04v154</name>
+            <name>minion-c04v155</name>
+          </slaveservers>
+        </clusterschema>
+        <clusterschema>
+          <name>Production Services Cluster</name>
+          <base_port>40000</base_port>
+          <sockets_buffer_size>2000</sockets_buffer_size>
+          <sockets_flush_interval>5000</sockets_flush_interval>
+          <sockets_compressed>N</sockets_compressed>
+          <dynamic>N</dynamic>
+          <slaveservers>
+            <name>henchman-c02v040</name>
+            <name>henchman-c02v041</name>
+            <name>minion-c03v101</name>
+            <name>minion-c03v102</name>
+            <name>minion-c03v103</name>
+            <name>minion-c03v104</name>
+            <name>minion-c03v105</name>
+          </slaveservers>
+        </clusterschema>
+        <clusterschema>
+          <name>StagingRc DB Slaves</name>
+          <base_port>40000</base_port>
+          <sockets_buffer_size>2000</sockets_buffer_size>
+          <sockets_flush_interval>5000</sockets_flush_interval>
+          <sockets_compressed>Y</sockets_compressed>
+          <dynamic>N</dynamic>
+          <slaveservers>
+            <name>henchman-0</name>
+            <name>minion-0</name>
+          </slaveservers>
+        </clusterschema>
+        <clusterschema>
+          <name>Test Cluster Schema</name>
+          <base_port>40000</base_port>
+          <sockets_buffer_size>2000</sockets_buffer_size>
+          <sockets_flush_interval>5000</sockets_flush_interval>
+          <sockets_compressed>Y</sockets_compressed>
+          <dynamic>N</dynamic>
+          <slaveservers>
+            <name>henchman-0</name>
+            <name>minion-0</name>
+          </slaveservers>
+        </clusterschema>
+        <clusterschema>
+          <name>UAT Cluster</name>
+          <base_port>40000</base_port>
+          <sockets_buffer_size>2000</sockets_buffer_size>
+          <sockets_flush_interval>5000</sockets_flush_interval>
+          <sockets_compressed>N</sockets_compressed>
+          <dynamic>N</dynamic>
+          <slaveservers>
+            <name>henchman-c02v044</name>
+            <name>minion-c05v101</name>
+            <name>minion-c05v102</name>
+          </slaveservers>
+        </clusterschema>
+    </clusterschemas>
+  <created_user>rob.pollard</created_user>
+  <created_date>2013&#x2f;03&#x2f;29 10&#x3a;57&#x3a;52.579</created_date>
+  <modified_user>christopher.deptula</modified_user>
+  <modified_date>2012&#x2f;12&#x2f;17 15&#x3a;45&#x3a;48.548</modified_date>
+  </info>
+  <notepads>
+  </notepads>
+  <connection>
+    <name>AgileBI</name>
+    <server>localhost</server>
+    <type>MONETDB</type>
+    <access>Native</access>
+    <database>pentaho-instaview</database>
+    <port>50000</port>
+    <username>monetdb</username>
+    <password>Encrypted 2be98afc86aa7f2e4cb14a17edb86abd8</password>
+    <servername/>
+    <data_tablespace/>
+    <index_tablespace/>
+    <read_only>true</read_only>
+    <attributes>
+      <attribute><code>EXTRA_OPTION_INFOBRIGHT.characterEncoding</code><attribute>UTF-8</attribute></attribute>
+      <attribute><code>EXTRA_OPTION_MYSQL.defaultFetchSize</code><attribute>500</attribute></attribute>
+      <attribute><code>EXTRA_OPTION_MYSQL.useCursorFetch</code><attribute>true</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>50000</attribute></attribute>
+      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>Y</attribute></attribute>
+      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
+      <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>Y</attribute></attribute>
+    </attributes>
+  </connection>
+  <connection>
+    <name>BATCH_DB</name>
+    <server>&#x24;&#x7b;BATCH_DB_RO&#x7d;</server>
+    <type>POSTGRESQL</type>
+    <access>Native</access>
+    <database>&#x24;&#x7b;BATCH_DB_RO_NAME&#x7d;</database>
+    <port>&#x24;&#x7b;BATCH_DB_RO_PORT&#x7d;</port>
+    <username>&#x24;&#x7b;BATCH_DB_RO_USER&#x7d;</username>
+    <password>&#x24;&#x7b;BATCH_DB_RO_PWD&#x7d;</password>
+    <servername/>
+    <data_tablespace/>
+    <index_tablespace/>
+    <attributes>
+      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>&#x24;&#x7b;BATCH_DB_RO_PORT&#x7d;</attribute></attribute>
+      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
+      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
+      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
+      <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>N</attribute></attribute>
+      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
+    </attributes>
+  </connection>
+  <connection>
+    <name>CARDHOLDER_DB</name>
+    <server>&#x24;&#x7b;CARDHOLDER_DB_RW&#x7d;</server>
+    <type>POSTGRESQL</type>
+    <access>Native</access>
+    <database>&#x24;&#x7b;CARDHOLDER_DB_RW_NAME&#x7d;</database>
+    <port>&#x24;&#x7b;CARDHOLDER_DB_RW_PORT&#x7d;</port>
+    <username>&#x24;&#x7b;CARDHOLDER_DB_RW_USER&#x7d;</username>
+    <password>&#x24;&#x7b;CARDHOLDER_DB_RW_PWD&#x7d;</password>
+    <servername/>
+    <data_tablespace/>
+    <index_tablespace/>
+    <attributes>
+      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>&#x24;&#x7b;CARDHOLDER_DB_RW_PORT&#x7d;</attribute></attribute>
+      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
+      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
+      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
+      <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>Y</attribute></attribute>
+      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
+    </attributes>
+  </connection>
+  <connection>
+    <name>DASHBOARD_DB</name>
+    <server>&#x24;&#x7b;DASHBOARD_DB_RW&#x7d;</server>
+    <type>POSTGRESQL</type>
+    <access>Native</access>
+    <database>&#x24;&#x7b;DASHBOARD_DB_RW_NAME&#x7d;</database>
+    <port>&#x24;&#x7b;DASHBOARD_DB_RW_PORT&#x7d;</port>
+    <username>&#x24;&#x7b;DASHBOARD_DB_RW_USER&#x7d;</username>
+    <password>&#x24;&#x7b;DASHBOARD_DB_RW_PWD&#x7d;</password>
+    <servername/>
+    <data_tablespace/>
+    <index_tablespace/>
+    <attributes>
+      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>&#x24;&#x7b;DASHBOARD_DB_RW_PORT&#x7d;</attribute></attribute>
+      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
+      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
+      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
+      <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>N</attribute></attribute>
+      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
+    </attributes>
+  </connection>
+  <connection>
+    <name>DASHBOARD_SLAVE_DB</name>
+    <server>&#x24;&#x7b;DASHBOARD_SLAVE_DB_RW&#x7d;</server>
+    <type>POSTGRESQL</type>
+    <access>Native</access>
+    <database>&#x24;&#x7b;DASHBOARD_SLAVE_DB_RW_NAME&#x7d;</database>
+    <port>&#x24;&#x7b;DASHBOARD_SLAVE_DB_RW_PORT&#x7d;</port>
+    <username>&#x24;&#x7b;DASHBOARD_SLAVE_DB_RW_USER&#x7d;</username>
+    <password>&#x24;&#x7b;DASHBOARD_SLAVE_DB_RW_PWD&#x7d;</password>
+    <servername/>
+    <data_tablespace/>
+    <index_tablespace/>
+    <attributes>
+      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>&#x24;&#x7b;DASHBOARD_SLAVE_DB_RW_PORT&#x7d;</attribute></attribute>
+      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
+      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
+      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>N</attribute></attribute>
+      <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>N</attribute></attribute>
+      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
+    </attributes>
+  </connection>
+  <connection>
+    <name>EDOHUB_DB</name>
+    <server>&#x24;&#x7b;EDOHUB_DB_RW&#x7d;</server>
+    <type>POSTGRESQL</type>
+    <access>Native</access>
+    <database>&#x24;&#x7b;EDOHUB_DB_RW_NAME&#x7d;</database>
+    <port>&#x24;&#x7b;EDOHUB_DB_RW_PORT&#x7d;</port>
+    <username>&#x24;&#x7b;EDOHUB_DB_RW_USER&#x7d;</username>
+    <password>&#x24;&#x7b;EDOHUB_DB_RW_PWD&#x7d;</password>
+    <servername/>
+    <data_tablespace/>
+    <index_tablespace/>
+    <attributes>
+      <attribute><code>EXTRA_OPTION_POSTGRESQL.application_name</code><attribute>Pentaho 4.3.0 DB pool</attribute></attribute>
+      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>INITIAL_POOL_SIZE</code><attribute>3</attribute></attribute>
+      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
+      <attribute><code>MAXIMUM_POOL_SIZE</code><attribute>8</attribute></attribute>
+      <attribute><code>POOLING_initialSize</code><attribute>5</attribute></attribute>
+      <attribute><code>POOLING_maxActive</code><attribute>8</attribute></attribute>
+      <attribute><code>POOLING_maxIdle</code><attribute>8</attribute></attribute>
+      <attribute><code>POOLING_minIdle</code><attribute>1</attribute></attribute>
+      <attribute><code>POOLING_poolPreparedStatements</code><attribute>true</attribute></attribute>
+      <attribute><code>POOLING_removeAbandoned</code><attribute>true</attribute></attribute>
+      <attribute><code>POOLING_removeAbandonedTimeout</code><attribute>300</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>&#x24;&#x7b;EDOHUB_DB_RW_PORT&#x7d;</attribute></attribute>
+      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
+      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
+      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
+      <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>N</attribute></attribute>
+      <attribute><code>USE_POOLING</code><attribute>Y</attribute></attribute>
+    </attributes>
+  </connection>
+  <connection>
+    <name>FILETRANSFER_DB</name>
+    <server>&#x24;&#x7b;FILETRANSFER_DB_RW&#x7d;</server>
+    <type>POSTGRESQL</type>
+    <access>Native</access>
+    <database>&#x24;&#x7b;FILETRANSFER_DB_RW_NAME&#x7d;</database>
+    <port>&#x24;&#x7b;FILETRANSFER_DB_RW_PORT&#x7d;</port>
+    <username>&#x24;&#x7b;FILETRANSFER_DB_RW_USER&#x7d;</username>
+    <password>&#x24;&#x7b;FILETRANSFER_DB_RW_PWD&#x7d;</password>
+    <servername/>
+    <data_tablespace/>
+    <index_tablespace/>
+    <attributes>
+      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>&#x24;&#x7b;FILETRANSFER_DB_RW_PORT&#x7d;</attribute></attribute>
+      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
+      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
+      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>N</attribute></attribute>
+      <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>N</attribute></attribute>
+      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
+    </attributes>
+  </connection>
+  <connection>
+    <name>HIVE_DB</name>
+    <server>&#x24;&#x7b;HIVE_HOST&#x7d;</server>
+    <type>HIVE2</type>
+    <access>Native</access>
+    <database>&#x24;&#x7b;HIVE_DB&#x7d;</database>
+    <port>&#x24;&#x7b;HIVE_PORT&#x7d;</port>
+    <username>rundeck</username>
+    <password>Encrypted </password>
+    <servername/>
+    <data_tablespace/>
+    <index_tablespace/>
+    <attributes>
+      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>&#x24;&#x7b;HIVE_PORT&#x7d;</attribute></attribute>
+      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
+      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
+      <attribute><code>SQL_CONNECT</code><attribute>set mapred.map.tasks.speculative.execution&#x3d;false&#x3b;&#xa;set mapred.job.priority&#x3d;VERY_HIGH&#x3b;&#xa;set hive.support.concurrency&#x3d;false&#x3b;</attribute></attribute>
+      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
+      <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>Y</attribute></attribute>
+      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
+    </attributes>
+  </connection>
+  <connection>
+    <name>IMPALA_DB</name>
+    <server>&#x24;&#x7b;IMPALA_DB_RW&#x7d;</server>
+    <type>IMPALA</type>
+    <access>Native</access>
+    <database>&#x24;&#x7b;IMPALA_DB_RW_NAME&#x7d;</database>
+    <port>&#x24;&#x7b;IMPALA_DB_RW_PORT&#x7d;</port>
+    <username>&#x24;&#x7b;IMPALA_DB_RW_USER&#x7d;</username>
+    <password>Encrypted </password>
+    <servername/>
+    <data_tablespace/>
+    <index_tablespace/>
+    <attributes>
+      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>&#x24;&#x7b;IMPALA_DB_RW_PORT&#x7d;</attribute></attribute>
+      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
+      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
+      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
+      <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>Y</attribute></attribute>
+      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
+    </attributes>
+  </connection>
+  <connection>
+    <name>MARKETING_DB</name>
+    <server>&#x24;&#x7b;MARKETING_DB_RW&#x7d;</server>
+    <type>POSTGRESQL</type>
+    <access>Native</access>
+    <database>&#x24;&#x7b;MARKETING_DB_RW_NAME&#x7d;</database>
+    <port>&#x24;&#x7b;MARKETING_DB_RW_PORT&#x7d;</port>
+    <username>&#x24;&#x7b;MARKETING_DB_RW_USER&#x7d;</username>
+    <password>&#x24;&#x7b;MARKETING_DB_RW_PWD&#x7d;</password>
+    <servername/>
+    <data_tablespace/>
+    <index_tablespace/>
+    <attributes>
+      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>&#x24;&#x7b;MARKETING_DB_RW_PORT&#x7d;</attribute></attribute>
+      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
+      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
+      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
+      <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>N</attribute></attribute>
+      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
+    </attributes>
+  </connection>
+  <connection>
+    <name>PROCESS_DB</name>
+    <server>&#x24;&#x7b;PROCESS_DB_RW&#x7d;</server>
+    <type>POSTGRESQL</type>
+    <access>Native</access>
+    <database>&#x24;&#x7b;PROCESS_DB_RW_NAME&#x7d;</database>
+    <port>&#x24;&#x7b;PROCESS_DB_RW_PORT&#x7d;</port>
+    <username>&#x24;&#x7b;PROCESS_DB_RW_USER&#x7d;</username>
+    <password>&#x24;&#x7b;PROCESS_DB_RW_PWD&#x7d;</password>
+    <servername/>
+    <data_tablespace/>
+    <index_tablespace/>
+    <attributes>
+      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>&#x24;&#x7b;PROCESS_DB_RW_PORT&#x7d;</attribute></attribute>
+      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
+      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
+      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
+      <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>Y</attribute></attribute>
+      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
+    </attributes>
+  </connection>
+  <connection>
+    <name>PROFILE_DB</name>
+    <server>&#x24;&#x7b;PROFILE_DB_RO&#x7d;</server>
+    <type>POSTGRESQL</type>
+    <access>Native</access>
+    <database>&#x24;&#x7b;PROFILE_DB_RO_NAME&#x7d;</database>
+    <port>&#x24;&#x7b;PROFILE_DB_RO_PORT&#x7d;</port>
+    <username>&#x24;&#x7b;PROFILE_DB_RO_USER&#x7d;</username>
+    <password>&#x24;&#x7b;PROFILE_DB_RO_PWD&#x7d;</password>
+    <servername/>
+    <data_tablespace/>
+    <index_tablespace/>
+    <attributes>
+      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>INITIAL_POOL_SIZE</code><attribute>5</attribute></attribute>
+      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
+      <attribute><code>MAXIMUM_POOL_SIZE</code><attribute>10</attribute></attribute>
+      <attribute><code>POOLING_initialSize</code><attribute>1</attribute></attribute>
+      <attribute><code>POOLING_maxActive</code><attribute>8</attribute></attribute>
+      <attribute><code>POOLING_maxIdle</code><attribute>1</attribute></attribute>
+      <attribute><code>POOLING_maxWait</code><attribute>15000</attribute></attribute>
+      <attribute><code>POOLING_minIdle</code><attribute>1</attribute></attribute>
+      <attribute><code>POOLING_poolPreparedStatements</code><attribute>true</attribute></attribute>
+      <attribute><code>POOLING_removeAbandoned</code><attribute>true</attribute></attribute>
+      <attribute><code>POOLING_removeAbandonedTimeout</code><attribute>10</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>&#x24;&#x7b;PROFILE_DB_RO_PORT&#x7d;</attribute></attribute>
+      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
+      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
+      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
+      <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>Y</attribute></attribute>
+      <attribute><code>USE_POOLING</code><attribute>Y</attribute></attribute>
+    </attributes>
+  </connection>
+  <connection>
+    <name>TARGETING_DB</name>
+    <server>&#x24;&#x7b;TARGETING_DB_RO&#x7d;</server>
+    <type>POSTGRESQL</type>
+    <access>Native</access>
+    <database>&#x24;&#x7b;TARGETING_DB_RO_NAME&#x7d;</database>
+    <port>&#x24;&#x7b;TARGETING_DB_RO_PORT&#x7d;</port>
+    <username>&#x24;&#x7b;TARGETING_DB_RO_USER&#x7d;</username>
+    <password>&#x24;&#x7b;TARGETING_DB_RO_PWD&#x7d;</password>
+    <servername/>
+    <data_tablespace/>
+    <index_tablespace/>
+    <attributes>
+      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>&#x24;&#x7b;TARGETING_DB_RO_PORT&#x7d;</attribute></attribute>
+      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
+      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
+      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>N</attribute></attribute>
+      <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>N</attribute></attribute>
+      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
+    </attributes>
+  </connection>
+  <connection>
+    <name>VECTORWISE_DB</name>
+    <server>&#x24;&#x7b;VECTORWISE_DB_RW&#x7d;</server>
+    <type>POSTGRESQL</type>
+    <access>Native</access>
+    <database>&#x24;&#x7b;VECTORWISE_DB_RW_NAME&#x7d;</database>
+    <port>&#x24;&#x7b;VECTORWISE_DB_RW_PORT&#x7d;</port>
+    <username>&#x24;&#x7b;VECTORWISE_DB_RW_USER&#x7d;</username>
+    <password>&#x24;&#x7b;VECTORWISE_DB_RW_PWD&#x7d;</password>
+    <servername/>
+    <data_tablespace/>
+    <index_tablespace/>
+    <attributes>
+      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>&#x24;&#x7b;VECTORWISE_DB_RW_PORT&#x7d;</attribute></attribute>
+      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
+      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
+      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
+      <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>Y</attribute></attribute>
+      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
+    </attributes>
+  </connection>
+  <connection>
+    <name>VECTORWISE_INGRES_DB</name>
+    <server/>
+    <type>GENERIC</type>
+    <access>Native</access>
+    <database/>
+    <port>1521</port>
+    <username>ingres</username>
+    <password>Encrypted 2be98afc86aa7f2e4aa09be7cdbc3fd89</password>
+    <servername/>
+    <data_tablespace/>
+    <index_tablespace/>
+    <attributes>
+      <attribute><code>CUSTOM_DRIVER_CLASS</code><attribute>com.ingres.jdbc.IngresDriver</attribute></attribute>
+      <attribute><code>CUSTOM_URL</code><attribute>jdbc&#x3a;ingres&#x3a;&#x2f;&#x2f;10.127.14.14&#x3a;vw7&#x2f;dds</attribute></attribute>
+      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>1521</attribute></attribute>
+      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
+      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
+      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>N</attribute></attribute>
+      <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>N</attribute></attribute>
+      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
+    </attributes>
+  </connection>
+  <order>
+  <hop> <from>Get System Info</from><to>Calculator</to><enabled>Y</enabled> </hop>
+  <hop> <from>Calculator</from><to>Regex Evaluation</to><enabled>Y</enabled> </hop>
+  <hop> <from>Regex Evaluation</from><to>Filter rows</to><enabled>Y</enabled> </hop>
+  <hop> <from>Filter rows</from><to>Dummy &#x28;do nothing&#x29;</to><enabled>Y</enabled> </hop>
+  <hop> <from>Filter rows</from><to>Select values</to><enabled>Y</enabled> </hop>
+  <hop> <from>Select values</from><to>Set files in result</to><enabled>N</enabled> </hop>
+  <hop> <from>Select values</from><to>Copy rows to result</to><enabled>Y</enabled> </hop>
+  <hop> <from>gfn</from><to>Select values 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Filter rows 2</from><to>Get File Names</to><enabled>Y</enabled> </hop>
+  <hop> <from>Get File Names</from><to>Get System Info</to><enabled>Y</enabled> </hop>
+  <hop> <from>Select values 2</from><to>Add constants</to><enabled>Y</enabled> </hop>
+  <hop> <from>Add constants</from><to>Filter rows 2</to><enabled>Y</enabled> </hop>
+  </order>
+  <step>
+    <name>Add constants</name>
+    <type>Constant</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>
+      <field>
+        <name>regex</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>.&#x2a;</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>270</xloc>
+      <yloc>150</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Calculator</name>
+    <type>Calculator</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+       <calculation><field_name>neg_seven</field_name>
+<calc_type>CONSTANT</calc_type>
+<field_a>-1</field_a>
+<field_b/>
+<field_c/>
+<value_type>Integer</value_type>
+<value_length>-1</value_length>
+<value_precision>-1</value_precision>
+<remove>N</remove>
+<conversion_mask/>
+<decimal_symbol/>
+<grouping_symbol/>
+<currency_symbol/>
+</calculation>
+       <calculation><field_name>start_date</field_name>
+<calc_type>ADD_DAYS</calc_type>
+<field_a>curr_date</field_a>
+<field_b>neg_seven</field_b>
+<field_c/>
+<value_type>Date</value_type>
+<value_length>-1</value_length>
+<value_precision>-1</value_precision>
+<remove>N</remove>
+<conversion_mask/>
+<decimal_symbol/>
+<grouping_symbol/>
+<currency_symbol/>
+</calculation>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>780</xloc>
+      <yloc>150</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Copy rows to result</name>
+    <type>RowsToResult</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>1290</xloc>
+      <yloc>240</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Dummy &#x28;do nothing&#x29;</name>
+    <type>Dummy</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>1140</xloc>
+      <yloc>270</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Filter rows</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<send_true_to>Select values</send_true_to>
+<send_false_to>Dummy &#x28;do nothing&#x29;</send_false_to>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <conditions>
+  <condition>
+   <negated>N</negated>
+   <operator>AND</operator>
+   <leftvalue>is_match</leftvalue>
+   <function>&#x3d;</function>
+   <rightvalue/>
+   <value><name>constant</name><type>Boolean</type><text>Y</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
+  <condition>
+   <negated>N</negated>
+   <operator>AND</operator>
+   <leftvalue>tmp_date</leftvalue>
+   <function>&#x3c;&#x3d;</function>
+   <rightvalue>start_date</rightvalue>
+   </condition>
+  </conditions>
+ </condition>
+    </compare>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>1110</xloc>
+      <yloc>150</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Filter rows 2</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<send_true_to/>
+<send_false_to/>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <leftvalue>short_parent_folder</leftvalue>
+ <function>REGEXP</function>
+ <rightvalue/>
+ <value><name>constant</name><type>String</type><text>hive.&#x2a;</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value> </condition>
+    </compare>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>360</xloc>
+      <yloc>150</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Get File Names</name>
+    <type>GetFileNames</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <filter>
+      <filterfiletype>only_folders</filterfiletype>
+    </filter>
+    <doNotFailIfNoFile>N</doNotFailIfNoFile>
+    <rownum>N</rownum>
+    <isaddresult>N</isaddresult>
+    <filefield>Y</filefield>
+    <rownum_field/>
+    <filename_Field>parent_folder</filename_Field>
+    <wildcard_Field>regex</wildcard_Field>
+    <exclude_wildcard_Field/>
+    <dynamic_include_subfolders>N</dynamic_include_subfolders>
+    <limit>0</limit>
+    <file>
+    </file>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>480</xloc>
+      <yloc>150</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Get System Info</name>
+    <type>SystemInfo</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>
+      <field>
+        <name>curr_date</name>
+        <type>system date &#x28;fixed&#x29;</type>
+        </field>
+      </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>630</xloc>
+      <yloc>150</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Regex Evaluation</name>
+    <type>RegexEval</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <script><![CDATA[.*/hive\_(\d{4}-\d{2}-\d{2})\_.*]]></script>    <matcher>filename</matcher>
+    <resultfieldname>is_match</resultfieldname>
+    <usevar>N</usevar>
+    <allowcapturegroups>Y</allowcapturegroups>
+    <replacefields>Y</replacefields>
+    <canoneq>N</canoneq>
+    <caseinsensitive>N</caseinsensitive>
+    <comment>N</comment>
+    <dotall>N</dotall>
+    <multiline>N</multiline>
+    <unicode>N</unicode>
+    <unix>N</unix>
+    <fields>
+      <field>
+        <name>tmp_date</name>
+        <type>Date</type>
+        <format>yyyy-MM-dd</format>
+        <group/>
+        <decimal/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <nullif/>
+        <ifnull/>
+        <trimtype>none</trimtype>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>930</xloc>
+      <yloc>150</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Select values</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>      <field>        <name>filename</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>        <select_unspecified>N</select_unspecified>
+    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>1290</xloc>
+      <yloc>150</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Select values 2</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>      <field>        <name>filename</name>
+        <rename>parent_folder</rename>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>short_filename</name>
+        <rename>short_parent_folder</rename>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>        <select_unspecified>N</select_unspecified>
+    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>150</xloc>
+      <yloc>150</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Set files in result</name>
+    <type>FilesToResult</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<filename_field>filename</filename_field>
+<file_type>GENERAL</file_type>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>1440</xloc>
+      <yloc>120</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>gfn</name>
+    <type>GetFileNames</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <filter>
+      <filterfiletype>only_folders</filterfiletype>
+    </filter>
+    <doNotFailIfNoFile>N</doNotFailIfNoFile>
+    <rownum>N</rownum>
+    <isaddresult>N</isaddresult>
+    <filefield>N</filefield>
+    <rownum_field/>
+    <filename_Field/>
+    <wildcard_Field/>
+    <exclude_wildcard_Field/>
+    <dynamic_include_subfolders>N</dynamic_include_subfolders>
+    <limit>0</limit>
+    <file>
+      <name>&#x24;&#x7b;HDFS_PROTOCOL&#x7d;&#x24;&#x7b;HDFS_HOST&#x7d;&#x3a;&#x24;&#x7b;HDFS_PORT&#x7d;&#x2f;tmp&#x2f;</name>
+      <filemask>hive.&#x2a;</filemask>
+      <exclude_filemask/>
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+    </file>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>30</xloc>
+      <yloc>150</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step_error_handling>
+  </step_error_handling>
+   <slave-step-copy-partition-distribution>
+</slave-step-copy-partition-distribution>
+   <slave_transformation>N</slave_transformation>
+
+</transformation>

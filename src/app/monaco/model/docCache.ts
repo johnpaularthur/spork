@@ -54,6 +54,10 @@ import {setupMonacoTypecript} from "../../monaco/languages/typescript/monacoType
 setupMonacoTypecript();
 import {setupMonacoJson} from "../../monaco/languages/json/monacoJson";
 setupMonacoJson();
+// associate xml with pentaho doc ext
+import {setupMonacoPentaho} from "../../monaco/languages/pentaho/monacoPentaho";
+setupMonacoPentaho();
+
 
 /**
  * Ext lookup
@@ -62,9 +66,11 @@ const extLookup: { [ext: string]: monaco.languages.ILanguageExtensionPoint } = {
 monaco.languages.getLanguages().forEach(function(language) {
     // console.log(language); // DEBUG
     language.extensions.forEach(ext => {
+
         // ext is like `.foo`. We really want `foo`
         ext = ext.substr(1);
         extLookup[ext] = language;
+
     })
 });
 
