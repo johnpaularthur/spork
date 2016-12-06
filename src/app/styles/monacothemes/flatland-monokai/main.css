@@ -1,0 +1,67 @@
+/* we replaced the bg color 38, 41, 44 with our colors in themes/[current]/monaco/themeVars.tsx
+* it is set at the vs-dark selector, not the themes.  If you make a new theme, you must comment out the 
+* .monaco-editor-background
+* .glyph-margin
+* .monaco-workbench .monaco-editor-background
+* like below in order to match tab colors
+*/
+
+.monaco-editor.vs-dark.flatland-monokai .token.comment { color: rgba(117, 113, 94, 1); }
+.monaco-editor.vs-dark.flatland-monokai .token.string { color: rgba(230, 219, 116, 1); }
+.monaco-editor.vs-dark.flatland-monokai .token.constant.numeric { color: rgba(174, 129, 255, 1); }
+.monaco-editor.vs-dark.flatland-monokai .token.constant.language { color: rgba(174, 129, 255, 1); }
+.monaco-editor.vs-dark.flatland-monokai .token.constant.character { color: rgba(174, 129, 255, 1); }
+.monaco-editor.vs-dark.flatland-monokai .token.constant.other { color: rgba(174, 129, 255, 1); }
+.monaco-editor.vs-dark.flatland-monokai .token.variable {  }
+.monaco-editor.vs-dark.flatland-monokai .token.keyword { color: rgba(249, 38, 114, 1); }
+.monaco-editor.vs-dark.flatland-monokai .token.storage { color: rgba(249, 38, 114, 1); }
+.monaco-editor.vs-dark.flatland-monokai .token.storage.type { font-style: italic; color: rgba(102, 217, 239, 1); }
+.monaco-editor.vs-dark.flatland-monokai .token.entity.name.class { text-decoration: underline; color: rgba(166, 226, 46, 1); }
+.monaco-editor.vs-dark.flatland-monokai .token.entity.other.inherited-class { font-style: italic; text-decoration: underline; color: rgba(166, 226, 46, 1); }
+.monaco-editor.vs-dark.flatland-monokai .token.entity.name.function { color: rgba(166, 226, 46, 1); }
+.monaco-editor.vs-dark.flatland-monokai .token.variable.parameter { font-style: italic; color: rgba(253, 151, 31, 1); }
+.monaco-editor.vs-dark.flatland-monokai .token.entity.name.tag { color: rgba(249, 38, 114, 1); }
+.monaco-editor.vs-dark.flatland-monokai .token.entity.other.attribute-name { color: rgba(166, 226, 46, 1); }
+.monaco-editor.vs-dark.flatland-monokai .token.support.function { color: rgba(102, 217, 239, 1); }
+.monaco-editor.vs-dark.flatland-monokai .token.support.constant { color: rgba(102, 217, 239, 1); }
+.monaco-editor.vs-dark.flatland-monokai .token.support.type { font-style: italic; color: rgba(102, 217, 239, 1); }
+.monaco-editor.vs-dark.flatland-monokai .token.support.class { font-style: italic; color: rgba(102, 217, 239, 1); }
+.monaco-editor.vs-dark.flatland-monokai .token.support.other.variable {  }
+.monaco-editor.vs-dark.flatland-monokai .token.invalid { color: rgba(248, 248, 240, 1); }
+.monaco-editor.vs-dark.flatland-monokai .token.invalid.deprecated { color: rgba(248, 248, 240, 1); }
+.monaco-editor.vs-dark.flatland-monokai .token.meta.structure.dictionary.json.string.quoted.double.json { color: rgba(207, 207, 194, 1); }
+.monaco-editor.vs-dark.flatland-monokai .token.meta.diff { color: rgba(117, 113, 94, 1); }
+.monaco-editor.vs-dark.flatland-monokai .token.meta.diff.header { color: rgba(117, 113, 94, 1); }
+.monaco-editor.vs-dark.flatland-monokai .token.markup.deleted { color: rgba(249, 38, 114, 1); }
+.monaco-editor.vs-dark.flatland-monokai .token.markup.inserted { color: rgba(166, 226, 46, 1); }
+.monaco-editor.vs-dark.flatland-monokai .token.markup.changed { color: rgba(230, 219, 116, 1); }
+.monaco-editor.vs-dark.flatland-monokai .token.markup.deleted.git_gutter { color: rgba(249, 38, 114, 1); }
+.monaco-editor.vs-dark.flatland-monokai .token.markup.inserted.git_gutter { color: rgba(166, 226, 46, 1); }
+.monaco-editor.vs-dark.flatland-monokai .token.markup.changed.git_gutter { color: rgba(230, 219, 116, 1); }
+.monaco-editor.vs-dark.flatland-monokai .token.markup.ignored.git_gutter { color: rgba(117, 113, 94, 1); }
+.monaco-editor.vs-dark.flatland-monokai .token.markup.untracked.git_gutter { color: rgba(117, 113, 94, 1); }
+.monaco-editor.vs-dark.flatland-monokai .token.constant.numeric.line-number.find-in-files.-.match { color: rgba(174, 129, 255, 0.63); }
+.monaco-editor.vs-dark.flatland-monokai .token.entity.name.filename.find-in-files { color: rgba(230, 219, 116, 1); }
+/*.monaco-editor.vs-dark.flatland-monokai .monaco-editor-background { background-color: rgba(38, 41, 44, 1); }
+.monaco-editor.vs-dark.flatland-monokai .glyph-margin { background-color: rgba(38, 41, 44, 1); }
+.vs-dark.flatland-monokai .monaco-workbench .monaco-editor-background { background-color: rgba(38, 41, 44, 1); }*/
+.monaco-editor.vs-dark.flatland-monokai .token { color: rgba(248, 248, 242, 1); }
+.monaco-editor.vs-dark.flatland-monokai .cursor { background-color: rgba(248, 248, 240, 1); border-color: rgba(248, 248, 240, 1); color: rgba(7, 7, 15, 1); }
+.monaco-editor.vs-dark.flatland-monokai .token.whitespace { color: rgba(59, 58, 50, 1) !important; }
+.monaco-editor.vs-dark.flatland-monokai .lines-content .cigr { background: rgba(59, 58, 50, 1); }
+.monaco-editor.vs-dark.flatland-monokai .current-line { background-color: rgba(32, 35, 37, 1); border: none; }
+.monaco-editor.vs-dark.flatland-monokai .focused .selected-text { background-color: rgba(73, 72, 62, 1); }
+.monaco-editor.vs-dark.flatland-monokai .selected-text { background-color: rgba(73, 72, 62, 0.5); }
+
+
+/**
+ * These are our extensions to the flatland-monocai theme
+ */
+/* the default has nothing for qualifier */
+.monaco-editor.vs-dark.flatland-monokai .qualifier { color: rgb(0, 208, 255); }
+/* `def` does not exist. We like to use it for variable definitions */
+.monaco-editor.vs-dark.flatland-monokai .def { color: rgb(253, 151, 31); }
+/** variable-2 doesn't exist. We use it for identifiers in type positions */
+.monaco-editor.vs-dark.flatland-monokai .variable-2 { color: #9effff; }
+/* the default has nothing for token.tag */
+.monaco-editor.vs-dark.flatland-monokai .token.tag { color: rgba(249, 38, 114, 1); }

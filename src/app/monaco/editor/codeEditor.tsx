@@ -18,8 +18,11 @@ import * as testedMonaco from "../addons/testedMonaco";
 
 import * as monacoStyles from "../../styles/themes/current/monaco/main";
 
-// The monokai theme
-require('./monokai.css');
+// The atom-one-dark theme
+require('../../styles/monacothemes/atom-one-dark/main.css');
+// The flatland-monokai theme
+//require('../../styles/monacothemes/flatland-monokai/main.css');
+
 // Any other style modifications
 require("../../styles/themes/current/monaco/themeVars");
 require('../../styles/themes/current/monaco/codeEditor.css');
@@ -79,7 +82,7 @@ export class CodeEditor extends ui.BaseComponent<Props,{isFocused?:boolean, load
         var mountNode = this.refs.codeEditor;
         this.editor = monaco.editor.create(mountNode, {
             value: '...',
-            theme: 'vs-dark vscode-theme-monokai-themes-Monokai-tmTheme',
+            theme: 'vs-dark atom-one-dark',
 			folding: true,
 			autoClosingBrackets: true,
 			wrappingColumn: 0,

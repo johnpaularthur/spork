@@ -1,0 +1,158 @@
+/* we replaced the bg color 40, 44, 52 with our colors in themes/[current]/monaco/themeVars.tsx
+* it is set at the vs-dark selector, not the themes.  If you make a new theme, you must comment out the 
+* .monaco-editor-background
+* .glyph-margin
+* .monaco-workbench .monaco-editor-background
+* like below in order to match tab colors
+*/
+
+.monaco-editor.vs-dark.atom-one-dark .token.comment { color: rgba(92, 99, 112, 1); font-style: italic; }
+.monaco-editor.vs-dark.atom-one-dark .token.punctuation.definition.comment { color: rgba(92, 99, 112, 1); font-style: italic; }
+.monaco-editor.vs-dark.atom-one-dark .token.comment { color: rgba(92, 99, 112, 1); font-style: italic; }
+.monaco-editor.vs-dark.atom-one-dark .token.none { color: rgba(166, 178, 192, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.keyword.operator { color: rgba(171, 178, 191, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.keyword { color: rgba(198, 120, 221, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.variable { color: rgba(224, 108, 117, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.token.variable.parameter.java { color: rgba(171, 178, 191, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.import.storage.java { color: rgba(229, 192, 123, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.token.package.keyword { color: rgba(198, 120, 221, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.token.package { color: rgba(171, 178, 191, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.entity.name.function { color: rgba(97, 175, 239, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.meta.require { color: rgba(97, 175, 239, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.support.function.any-method { color: rgba(97, 175, 239, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.entity.name.type.namespace { color: rgba(229, 192, 123, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.support.class { color: rgba(229, 192, 123, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.entity.name.type.class { color: rgba(229, 192, 123, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.entity.name.class.identifier.namespace.type { color: rgba(229, 192, 123, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.entity.name.class { color: rgba(97, 175, 239, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.entity.name.type { color: rgba(229, 192, 123, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.keyword.control { color: rgba(198, 120, 221, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.control.elements { color: rgba(209, 154, 102, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.keyword.operator.less { color: rgba(209, 154, 102, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.keyword.other.special-method { color: rgba(97, 175, 239, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.storage { color: rgba(198, 120, 221, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.token.storage.js { color: rgba(198, 120, 221, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.token.storage.ts { color: rgba(198, 120, 221, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.token.storage.type.java { color: rgba(229, 192, 123, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.support.function { color: rgba(86, 182, 194, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.support.type.property-name { color: rgba(171, 178, 191, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.support.constant.property-value { color: rgba(171, 178, 191, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.support.constant.font-name { color: rgba(209, 154, 102, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.meta.tag { color: rgba(171, 178, 191, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.string { color: rgba(152, 195, 121, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.entity.other.inherited-class { color: rgba(152, 195, 121, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.constant.other.symbol { color: rgba(86, 182, 194, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.constant.numeric { color: rgba(209, 154, 102, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.none { color: rgba(209, 154, 102, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.none { color: rgba(209, 154, 102, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.constant { color: rgba(209, 154, 102, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.punctuation.definition.constant { color: rgba(209, 154, 102, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.entity.name.tag { color: rgba(224, 108, 117, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.entity.other.attribute-name { color: rgba(209, 154, 102, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.entity.other.attribute-name.id { color: rgba(97, 175, 239, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.punctuation.definition.entity { color: rgba(209, 154, 102, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.meta.selector { color: rgba(198, 120, 221, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.none { color: rgba(210, 148, 93, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.markup.heading.entity.name { color: rgba(224, 108, 117, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.markup.heading.punctuation.definition.heading.markdown { color: rgba(224, 108, 117, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.markdown.punctuation.link.begin { color: rgba(166, 178, 192, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.markdown.punctuation.link.end { color: rgba(166, 178, 192, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.markdown.link.title.string { color: rgba(97, 175, 239, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.markup.heading.punctuation.definition.heading { color: rgba(97, 175, 239, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.entity.name.section { color: rgba(97, 175, 239, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.keyword.other.unit { color: rgba(209, 154, 102, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.markup.bold { color: rgba(209, 154, 102, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.punctuation.definition.bold { color: rgba(209, 154, 102, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.markup.italic { color: rgba(198, 120, 221, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.punctuation.definition.italic { color: rgba(198, 120, 221, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.emphasis.md { color: rgba(198, 120, 221, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.strong.md { color: rgba(209, 154, 102, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.variable.md { color: rgba(152, 195, 121, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.keyword.md { color: rgba(224, 108, 117, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.markup.raw.inline { color: rgba(144, 195, 120, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.meta.link { color: rgba(198, 120, 221, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.markup.list.punctuation.definition { color: rgba(223, 106, 115, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.markup.quote { color: rgba(210, 148, 93, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.meta.separator { color: rgba(166, 178, 192, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.markup.inserted { color: rgba(144, 195, 120, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.markup.deleted { color: rgba(223, 106, 115, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.markup.changed { color: rgba(198, 121, 221, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.string.regexp { color: rgba(87, 182, 194, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.constant.character.escape { color: rgba(87, 182, 194, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.punctuation.section.embedded { color: rgba(190, 79, 68, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.variable.interpolation { color: rgba(190, 79, 68, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.invalid.illegal { color: rgba(255, 255, 255, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.invalid.broken { color: rgba(255, 255, 255, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.invalid.deprecated { color: rgba(255, 255, 255, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.invalid.unimplemented { color: rgba(255, 255, 255, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.source.json...........................meta.structure.dictionary.json..............................string.quoted.double.json { color: rgba(223, 106, 115, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.structure.dictionary.json.value { color: rgba(144, 195, 120, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.structure.dictionary.json.detected-link { color: rgba(198, 120, 221, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.structure.dictionary.json.punctuation { color: rgba(166, 178, 192, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.structure.dictionary.json.property-name { color: rgba(223, 106, 115, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.text.html.laravel-blade........................source.php.embedded.line.html.....................entity.name.tag.laravel-blade { color: rgba(198, 121, 221, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.text.html.laravel-blade.........................source.php.embedded.line.html....................support.constant.laravel-blade { color: rgba(198, 121, 221, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.meta.function.decorator.python { color: rgba(97, 175, 239, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.support.token.decorator.python { color: rgba(86, 182, 194, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.meta.function.decorator.identifier.python { color: rgba(86, 182, 194, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.python.keyword.operator.logical { color: rgba(198, 120, 221, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.python.meta.function-call.arguments.variable.parameter { color: rgba(209, 154, 102, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.python.meta.type.support.function-call { color: rgba(86, 182, 194, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.function.parameter { color: rgba(209, 154, 102, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.function.parameter.js { color: rgba(171, 178, 191, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.function.parameter.ts { color: rgba(171, 178, 191, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.function.brace { color: rgba(171, 178, 191, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.function.parameter.ruby { color: rgba(171, 178, 191, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.function.parameter.cs { color: rgba(171, 178, 191, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.rgb-value { color: rgba(86, 182, 194, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.inline-color-decoration.rgb-value { color: rgba(209, 154, 102, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.less.rgb-value { color: rgba(209, 154, 102, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.selector.sass { color: rgba(224, 108, 117, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.var.this.js { color: rgba(223, 106, 115, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.var.this.ts { color: rgba(223, 106, 115, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.token.tsx.string { color: rgba(152, 195, 121, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.token.jsx.string { color: rgba(152, 195, 121, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.token.tsx.meta.type.declaration.support { color: rgba(86, 182, 194, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.token.jsx.meta.type.declaration.support { color: rgba(86, 182, 194, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.token.tsx.constant { color: rgba(209, 154, 102, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.token.jsx.constant { color: rgba(209, 154, 102, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.block.scope.end { color: rgba(171, 178, 191, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.block.scope.begin { color: rgba(171, 178, 191, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.token.string.html { color: rgba(152, 195, 121, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.markdown.markup.quote { color: rgba(92, 99, 112, 1); font-style: italic; }
+.monaco-editor.vs-dark.atom-one-dark .token.ruby.punctuation.definition.constant { color: rgba(86, 182, 194, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.ruby.operator.other.keyword { color: rgba(152, 195, 121, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.ruby.require.string { color: rgba(152, 195, 121, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.ruby.require { color: rgba(171, 178, 191, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.ruby.keyword.other.special-method { color: rgba(171, 178, 191, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.ruby.punctuation.section.fuction { color: rgba(171, 178, 191, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.ruby.token.separator.variable { color: rgba(171, 178, 191, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.rust.token.lifetime { color: rgba(51, 232, 236, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.rust.token.type.params.core.support { color: rgba(51, 232, 236, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.php.token.global.variable.safer { color: rgba(224, 108, 117, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.php.token.double.quote.variable { color: rgba(224, 108, 117, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.php.token.double.quoted { color: rgba(152, 195, 121, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.php.token.double.quoted.variable.punctuation.definition { color: rgba(224, 108, 117, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.token.punctuation.section.embedded.array { color: rgba(171, 178, 191, 1); }
+/*.monaco-editor.vs-dark.atom-one-dark .monaco-editor-background { background-color: rgba(40, 44, 52, 1); }
+.monaco-editor.vs-dark.atom-one-dark .glyph-margin { background-color: rgba(40, 44, 52, 1); }
+.vs-dark.atom-one-dark .monaco-workbench .monaco-editor-background { background-color: rgba(40, 44, 52, 1); }*/
+.monaco-editor.vs-dark.atom-one-dark .token { color: rgba(171, 178, 191, 1); }
+.monaco-editor.vs-dark.atom-one-dark .cursor { background-color: rgba(82, 139, 255, 1); border-color: rgba(82, 139, 255, 1); color: rgba(173, 116, 0, 1); }
+.monaco-editor.vs-dark.atom-one-dark .token.whitespace { color: rgba(75, 82, 91, 1) !important; }
+.monaco-editor.vs-dark.atom-one-dark .lines-content .cigr { background: rgba(75, 82, 91, 1); }
+.monaco-editor.vs-dark.atom-one-dark .current-line { background-color: rgba(44, 50, 60, 1); border: none; }
+.monaco-editor.vs-dark.atom-one-dark .focused .selected-text { background-color: rgba(62, 68, 81, 1); }
+.monaco-editor.vs-dark.atom-one-dark .selected-text { background-color: rgba(62, 68, 81, 0.5); }
+
+/**
+ * These are our extensions to the atom-one-dark theme
+ */
+/* the default has nothing for qualifier */
+.monaco-editor.vs-dark.atom-one-dark .qualifier { color: rgb(0, 208, 255); }
+/* `def` does not exist. We like to use it for variable definitions */
+.monaco-editor.vs-dark.atom-one-dark .def { color: rgba(209, 154, 102, 1); }
+/** variable-2 doesn't exist. We use it for identifiers in type positions */
+.monaco-editor.vs-dark.atom-one-dark .variable-2 { color: rgba(224, 108, 117, 1); }
+/* the default has nothing for token.tag */
+.monaco-editor.vs-dark.atom-one-dark .token.tag { color: rgba(224, 108, 117, 1); }
