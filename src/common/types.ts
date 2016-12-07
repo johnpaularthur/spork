@@ -707,3 +707,9 @@ export function makeBlandError(filePath: string, error: string, source: CodeErro
         level: 'error'
     }
 }
+
+
+export type PentahoJsonContent = {
+    filePath: string;
+    content: string;
+}

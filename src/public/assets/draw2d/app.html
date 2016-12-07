@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Ladle</title>
+
+    <script>
+      (function() {
+        if (!process.env.HOT) {
+          const link = document.createElement('link');
+          link.rel = 'stylesheet';
+          link.href = './dist/style.css';
+          document.write(link.outerHTML);
+        }
+      }());
+    </script>
+    <script type="text/javascript" src="vendor/draw2d/shifty.js"></script>
+    <script type="text/javascript" src="vendor/draw2d/patched_raphael.js"></script>
+    <script type="text/javascript" src="vendor/draw2d/raphael-svg-import.min.js"></script>
+
+
+    <script type="text/javascript" src="vendor/Syncfusion/scripts/jquery-2.1.4.min.js" onload="window.$ = window.jQuery = module.exports;"></script>
+    <!--<script type="text/javascript" src="vendor/Syncfusion/scripts/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="vendor/Syncfusion/scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script type="text/javascript" src="vendor/Syncfusion/scripts/jsrender.min.js"></script>-->
+    <script type="text/javascript" src="vendor/draw2d/jquery.autoresize.js"></script>
+    <script type="text/javascript" src="vendor/draw2d/jquery-touch_punch.js"></script>
+    <script type="text/javascript" src="vendor/draw2d/jquery.contextmenu.js"></script>
+
+    <script type="text/javascript" src="vendor/draw2d/rgbcolor.js"></script>
+    <script type="text/javascript" src="vendor/draw2d/patched_canvg.js"></script>
+    <script type="text/javascript" src="vendor/draw2d/patched_Class.js"></script>
+
+    <script type="text/javascript" src="vendor/draw2d/pathfinding-browser.min.js"></script>
+    <!--<script type="text/javascript" src="vendor/draw2d/StackBlur.js"></script>-->
+    <script type="text/javascript" src="vendor/draw2d/draw2d.js"></script>
+    <script type="text/javascript" src="vendor/draw2d/DrawLabeled.js"></script>
+    <script type="text/javascript" src="vendor/draw2d/PentahoIcon.js"></script>
+
+  </head>
+  <body>
+    <div id="root"></div>
+
+
+
+
+    <script>
+      {
+        var script = document.createElement('script');
+        const port = process.env.PORT || 3000;
+        script.src = (process.env.HOT)
+          ? 'http://localhost:' + port + '/dist/bundle.js'
+          : './dist/bundle.js';
+        document.write(script.outerHTML);
+
+
+      }
+      </script>
+    <!--<script type="text/javascript" src="vendor/Syncfusion/scripts/ej.web.all.min.js"></script>
+    <script type="text/javascript" src="vendor/Syncfusion/scripts/ej.web.react.min.js"></script>-->
+  </body>
+</html>

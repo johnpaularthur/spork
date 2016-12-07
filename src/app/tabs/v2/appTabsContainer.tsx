@@ -594,6 +594,11 @@ export class AppTabsContainer extends ui.BaseComponent<Props, State>{
                 return `${tabRegistry.tabs.astfull.protocol}://${filePath}`
             });
         });
+        commands.doOpenPentahoEditor.on((e) => {
+            openAnalysisViewForCurrentFilePath((filePath)=>{
+                return `${tabRegistry.tabs.pentaho.protocol}://${filePath}`
+            });
+        });
         commands.doOpenUmlDiagram.on((e) => {
             openAnalysisViewForCurrentFilePath((filePath)=>{
                 return `${tabRegistry.tabs.uml.protocol}://${filePath}`

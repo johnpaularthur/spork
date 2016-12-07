@@ -47,6 +47,9 @@ export var worker = {
     /** Uml diagram */
     getUmlDiagramForFile: {} as typeof socketContract.server.getUmlDiagramForFile,
 
+    /** Json from pentaho xml */
+    getJsonForFile: {} as typeof socketContract.server.getJsonForFile,
+
     /** tsFlow */
     getFlowRoots: {} as typeof socketContract.server.getFlowRoots,
 

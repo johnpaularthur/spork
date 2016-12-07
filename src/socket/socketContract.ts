@@ -89,6 +89,9 @@ export var server = {
     /** UML Diagram */
     getUmlDiagramForFile: {} as QRFunction<{ filePath: string }, { classes: types.UMLClass[] }>,
 
+    /** Json from pentaho xml */
+    getJsonForFile: {} as QRFunction<{ filePath: string }, string>,
+
     /** tsFlow */
     getFlowRoots: {} as QRFunction<types.TsFlowRootQuery, types.TsFlowRootResponse>,
 
