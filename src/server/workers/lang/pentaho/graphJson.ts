@@ -15,7 +15,7 @@ let getProject = activeProject.GetProject.getCurrentIfAny;
 
 var xml2js = require('xml2js');
 var parser = new xml2js.Parser();
-var builder = new xml2js.Builder();
+var builder = new xml2js.Builder({headless: true,pretty: false});
 
 
 /**
@@ -29,24 +29,25 @@ export function getJsonForFile(query: { filePath: string }):  Promise<string> {
     const filePath = query.filePath;
     const file = fmc.getOrCreateOpenFile(filePath);
 
-    const contents = file
+    const contents = file.getContents()
 
-    let rawjson = JSON.parse('[{ "type": "draw2d.shape.basic.Rectangle",  "id": "d278094b-8d1a-af71-f828-50129a034676",    "x": 124,    "y": 114,    "width": 50,    "height": 100,    "alpha": 1,    "angle": 0,    "userData": {},    "cssClass": "draw2d_shape_basic_Rectangle",   "bgColor": "#A0A0A0",    "color": "#1B1B1B",    "stroke": 1,    "radius": 0,    "dasharray": null  }]');
+    // let rawjson = JSON.parse('{ "type": "draw2d.shape.basic.Rectangle",  "id": "d278094b-8d1a-af71-f828-50129a034676",    "x": 124,    "y": 114,    "width": 50,    "height": 100,    "alpha": 1,    "angle": 0,    "userData": {},    "cssClass": "draw2d_shape_basic_Rectangle",   "bgColor": "#A0A0A0",    "color": "#1B1B1B",    "stroke": 1,    "radius": 0,    "dasharray": null  }');
 
-    var rawxml = builder.buildObject(rawjson);
+    // var rawxml = builder.buildObject(rawjson);
 
-    console.log("parsing xml..");
-    console.log(rawxml);
-    console.log("..parsed xml should show up here ^^^")
+    // console.log("parsing xml..");
+    // console.log(rawxml);
+    // console.log("..parsed xml should show up here ^^^")
 
-    return getObject(rawxml);
+    return getObject(contents);
 }
 
 export function getObject(contents: string): Promise<string> {
-
+    console.log(contents);
     return new Promise((resolve, reject) =>
         parser.parseString(contents, function (err, result) {
-        resolve(result);
+            console.log(result);
+            resolve(result);
         })
     );
 
