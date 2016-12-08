@@ -245,7 +245,7 @@ export class PentahoEditor extends ui.BaseComponent<Props, State> {
             // this.filter();
             //console.log(res);
             this.setState({data: '[{ "type": "draw2d.shape.basic.Rectangle",  "id": "d278094b-8d1a-af71-f828-50129a034676",    "x": 124,    "y": 114,    "width": 50,    "height": 100,    "alpha": 1,    "angle": 0,    "userData": {},    "cssClass": "draw2d_shape_basic_Rectangle",   "bgColor": "#A0A0A0",    "color": "#1B1B1B",    "stroke": 1,    "radius": 0,    "dasharray": null  }]'})
-            console.log("state set");
+            console.log("state set", res);
             this.renderCanvas(this.state.uniqid);
         })
     }

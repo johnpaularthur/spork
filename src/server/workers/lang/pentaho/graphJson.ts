@@ -13,6 +13,11 @@ import {getDocumentedTypeLocation} from "../modules/astUtils";
 import * as activeProject from "../activeProject";
 let getProject = activeProject.GetProject.getCurrentIfAny;
 
+var xml2js = require('xml2js');
+var parser = new xml2js.Parser();
+var builder = new xml2js.Builder();
+
+
 /**
  * Get a json structure for a pentaho xml file
  * TODO: figure out Promises as I thought ":Promises<type.PentahoJsonContent>" would work with return { filePath, contentes }
@@ -26,9 +31,25 @@ export function getJsonForFile(query: { filePath: string }):  Promise<string> {
 
     const contents = file
 
+    let rawjson = JSON.parse('[{ "type": "draw2d.shape.basic.Rectangle",  "id": "d278094b-8d1a-af71-f828-50129a034676",    "x": 124,    "y": 114,    "width": 50,    "height": 100,    "alpha": 1,    "angle": 0,    "userData": {},    "cssClass": "draw2d_shape_basic_Rectangle",   "bgColor": "#A0A0A0",    "color": "#1B1B1B",    "stroke": 1,    "radius": 0,    "dasharray": null  }]');
+
+    var rawxml = builder.buildObject(rawjson);
+
+    console.log("parsing xml..");
+    console.log(rawxml);
+    console.log("..parsed xml should show up here ^^^")
+
+    return getObject(rawxml);
+}
+
+export function getObject(contents: string): Promise<string> {
+
     return new Promise((resolve, reject) =>
-        resolve(contents)
+        parser.parseString(contents, function (err, result) {
+        resolve(result);
+        })
     );
+
 }
 
 export function getClasses({sourceFile, program}: { sourceFile: ts.SourceFile, program: ts.Program }): types.UMLClass[] {
