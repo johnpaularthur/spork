@@ -28,4 +28,14 @@ declare module monaco {
             getEditableRange(): Range;
         }
     }
+    module languages {
+        interface IMonarchLanguage {
+            /**
+            * For some reason, not in defined on orig monaco.d.ts, but needed to define language
+            * Useful regular expressions
+            */
+            qualifiedName?: RegExp;
+        }            
+    }
+
 }

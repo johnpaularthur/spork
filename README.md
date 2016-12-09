@@ -31,6 +31,9 @@ Run it:
 npm start
 ```
 
+Now open it in `chrome` at the URL mentioned in your console.
+
+
 ## Useage (outside the project)
 
 The following build build and link spork so you can run it from any directory.  Do this under the spork directory.
@@ -38,15 +41,11 @@ The following build build and link spork so you can run it from any directory.  
 npm link
 ```
 
-If it won't build due to monaco typescript issue, add this the monaco.d.ts file under "export interface IMonarchLanguage {"
+Now cd to your desired project directory and issue:
 ```
-/**
-    * // Useful regular expressions
-    */
-qualifiedName?: RegExp;
+spork -o
 ```
 
-Now open it in `chrome` at the URL mentioned in your console.
 
 ## Features
 
