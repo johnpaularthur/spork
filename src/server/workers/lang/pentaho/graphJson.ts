@@ -23,8 +23,8 @@ var builder = new xml2js.Builder({headless: true,pretty: false});
  */
 export function getJsonForFile(query: { filePath: string }):  Promise<string> {
 
-    let project = activeProject.GetProject.getCurrentIfAny();
-    var languageService = project.languageService;
+    // let project = activeProject.GetProject.getCurrentIfAny();
+    // var languageService = project.languageService;
     const filePath = query.filePath;
     const file = fmc.getOrCreateOpenFile(filePath);
 
