@@ -91,7 +91,7 @@ export class AppTabsContainer extends ui.BaseComponent<Props, State>{
 
     componentDidMount() {
         server.getOpenUITabs({ sessionId: getSessionId() }).then(res => {
-            const config = GLUtil.unserializeConfig(res.tabLayout, this);
+            let config = GLUtil.unserializeConfig(res.tabLayout, this);
 
             /** This is needed as we use this ordered information in quite a few places */
             this.tabs = GLUtil.orderedTabs(config);
@@ -100,6 +100,8 @@ export class AppTabsContainer extends ui.BaseComponent<Props, State>{
              * Setup golden layout
              * https://golden-layout.com/docs/Config.html
              */
+            config['dimensions'] = {headerHeight: 35}
+            console.log(config);
             this.layout = new GoldenLayout(config, this.ctrls.root);
 
             /**

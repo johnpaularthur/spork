@@ -85,23 +85,32 @@
     transition: color .2s;
 }
 
-.lm_header {
+/*.lm_header {
     height: 29px !important;
     overflow: visible !important;
-}
+}*/
 
 .lm_header .lm_tab {
-    font-family: 'Helvetica', 'Segoe UI', sans-serif;
-    height: 24px;
-    line-height: 24px;
+    font-family: -apple-system,BlinkMacSystemFont,Segoe WPC,Segoe UI,HelveticaNeue-Light,Ubuntu,Droid Sans,sans-serif;
+    height: 30px;
+    line-height: 30px;
     text-align: center;
     margin-right: 0px;
     box-shadow: none;
+    font-size: 13px;
 }
 
 .lm_header .lm_tab.lm_active{
     box-shadow: none;
 }
+
+    .lm_close_tab {
+      height: 13px !important;
+    }
+    
+    .lm_controls {
+      top:7px;
+    }
 
 /*
  * Make golden layout content flex based (this is the continer for items)
