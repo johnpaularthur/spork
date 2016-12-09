@@ -20,7 +20,6 @@ var builder = new xml2js.Builder({headless: true,pretty: false});
 
 /**
  * Get a json structure for a pentaho xml file
- * TODO: figure out Promises as I thought ":Promises<type.PentahoJsonContent>" would work with return { filePath, contentes }
  */
 export function getJsonForFile(query: { filePath: string }):  Promise<string> {
 
@@ -31,15 +30,6 @@ export function getJsonForFile(query: { filePath: string }):  Promise<string> {
 
     const contents = file.getContents()
 
-    // let rawjson = JSON.parse('{ "type": "draw2d.shape.basic.Rectangle",  "id": "d278094b-8d1a-af71-f828-50129a034676",    "x": 124,    "y": 114,    "width": 50,    "height": 100,    "alpha": 1,    "angle": 0,    "userData": {},    "cssClass": "draw2d_shape_basic_Rectangle",   "bgColor": "#A0A0A0",    "color": "#1B1B1B",    "stroke": 1,    "radius": 0,    "dasharray": null  }');
-
-    // var rawxml = builder.buildObject(rawjson);
-
-    // console.log("parsing xml..");
-    // console.log(rawxml);
-    // console.log("..parsed xml should show up here ^^^")
-
-    //return getObject(contents);
     return getObject(contents).then(getFileInfo)
 
 }
@@ -58,7 +48,7 @@ function hashCode(e) {
     hash = hash & hash;
     i++;
   }
-  
+
   return hash;
 }
 
@@ -87,22 +77,44 @@ function getFileInfo(jsObject) {
             }
         }
         if(content.hasOwnProperty("hops")){
-            let hops = getJobLinks(jsObject.job.hops)
+            let hops = getJobLinks(content.hops)
             if(hops){
                 nodes = [...nodes,...hops]
             }
         }
         if(content.hasOwnProperty("notepads")){
-            let notepads = getJobLinks(jsObject.job.notepads)
+            let notepads = getNotes(content.notepads)
             if (notepads) {
                 nodes = [...nodes,...notepads]
             }
         }
 
     }else{
-        content = getTransformationInfo(jsObject);
+
+        content = jsObject.transformation
+
+        if(content.hasOwnProperty("step")){
+            let entries = getTransformationNodes(content);
+            if (entries) {
+                nodes = [...nodes,...entries]
+            }
+        }
+        if(content.hasOwnProperty("order")){
+            let hops = getTransformationLinks(content.order);
+            if (hops) {
+                nodes = [...nodes,...hops]
+            }
+        }
+        if(content.hasOwnProperty("notepads")){
+            let notepads = getNotes(content.notepads)
+            if (notepads) {
+                nodes = [...nodes,...notepads]
+            }
+        }
+        //console.log(jsObject.transformation)
+
     }
- 
+
     return JSON.stringify(nodes, null, 2)
 
 }
@@ -116,10 +128,10 @@ function getJobInfo(jsObject){
     }
 
     let finfo = jsObject.job;
-    
+
     fileHash.name = finfo.name
     fileHash.directory = finfo.directory
-    
+
     console.log(fileHash)
     return fileHash
 }
@@ -133,10 +145,10 @@ function getTransformationInfo(jsObject){
     }
 
     let finfo = jsObject.transformation.info;
-    
+
     fileHash.name = finfo.name
     fileHash.directory = finfo.directory
-    
+
     console.log(fileHash)
     return fileHash
 }
@@ -157,7 +169,7 @@ function getJobNodes(jobEntries) {
     for (let k = 0, len = entries.length; k < len; k++) {
 
         let entry = entries[k];
-        
+
         let comp = {};
         comp['type'] = "draw2d.shape.composite.Group";
         comp['id'] = hashCode("comp:" + entry.name);
@@ -187,7 +199,7 @@ function getJobNodes(jobEntries) {
         icons['width'] = 25;
         icons['height'] = 25;
         icons['composite'] = hashCode("comp:" + entry.name);
-        
+
         let drawNodes = {};
         drawNodes['type'] = "edo.LabeledBox";
         drawNodes['id'] = hashCode(entry.name);
@@ -249,7 +261,7 @@ function getJobNodes(jobEntries) {
             "locator": "draw2d.layout.locator.BottomLocator"
           }
         ];
-        
+
         nodes.push(comp);
         nodes.push(drawNodes);
         nodes.push(icons);
@@ -269,8 +281,8 @@ function getJobLinks(jobHops) {
     if(jobHops.hasOwnProperty("hop")){
         hops = jobHops.hop
     }else{
-        return 
-    }    
+        return
+    }
 
     for (let k = 0, len = hops.length; k < len; k++) {
 
@@ -316,18 +328,19 @@ function getJobLinks(jobHops) {
     return links
 }
 
-function getJobNotes(jobNotepads) {
+function getNotes(jobNotepads) {
     let notes = new Array
     let notepads
 
     // These are strangely rendered by xml2js
     // job.notepads will always be a single node followed by an "notepad" array,
     // so we assign notepads = job.notepads.notepad
+    // this works for transfromations as well
     if(jobNotepads.hasOwnProperty("notepad")){
         notepads = jobNotepads.notepad
     }else{
-        return 
-    }    
+        return
+    }
 
     for (let k = 0, len = notepads.length; k < len; k++) {
 
@@ -345,12 +358,181 @@ function getJobNotes(jobNotepads) {
         noteItem["bgColor"] = [note.backgroundcolorred,note.backgroundcolorgreen,note.backgroundcolorblue]
         noteItem["fontColor"] = [note.fontcolorred,note.fontcolorgreen,note.fontcolorblue]
         noteItem["outlineColor"] = [note.bordercolorred,note.bordercolorgreen,note.bordercolorblue]
-        
+
         notes.push(noteItem);
     }
 
     return notes
 }
+
+function getTransformationNodes(transformationSteps) {
+    //console.log(transformationSteps)
+
+    let nodes = new Array
+    let steps
+    // These are strangely rendered by xml2js
+    // job.entries will always be a single node followed by an "step" array,
+    // so we assign entries = job.entries.entry
+    if(transformationSteps.hasOwnProperty("step")){
+        steps = transformationSteps.step
+        //console.log("entries:",entries)
+    }else{
+        return nodes
+    }
+
+    for (let k = 0, len = steps.length; k < len; k++) {
+
+        let entry = steps[k];
+
+        let comp = {};
+        comp['type'] = "draw2d.shape.composite.Group";
+        comp['id'] = hashCode("comp:" + entry.name);
+        comp['x'] = entry.GUI.xloc;
+        comp['y'] = entry.GUI.yloc;
+        comp['width'] = 50;
+        comp['height'] = 50;
+
+
+        let icons = {};
+        icons['type'] = "draw2d.shape.icon.Star3";
+        icons['userData'] = {type:entry.type};
+        icons['cssClass'] = "draw2d_shape_node_" + entry.type;
+        icons['id'] = hashCode("icon" + entry.name);
+        icons['x'] = parseInt(entry.GUI.xloc) + 12.5;
+        icons['y'] = parseInt(entry.GUI.yloc) + 12.5;
+        icons['width'] = 25;
+        icons['height'] = 25;
+        icons['composite'] = hashCode("comp:" + entry.name);
+
+        let drawNodes = {};
+        drawNodes['type'] = "edo.LabeledBox";
+        drawNodes['id'] = hashCode(entry.name);
+        drawNodes['x'] = entry.GUI.xloc;
+        drawNodes['y'] = entry.GUI.yloc;
+        drawNodes['width'] = 50;
+        drawNodes['height'] = 50;
+        drawNodes['alpha'] = 1;
+        drawNodes['angle'] = 0;
+        drawNodes['userData'] = {};
+        drawNodes['cssClass'] = "draw2d_shape_node_" + entry.type;
+        drawNodes['stroke'] = 1;
+        drawNodes['radius'] = 2;
+        drawNodes['dasharray'] = null;
+        drawNodes['composite'] = hashCode("comp:" + entry.name);
+        drawNodes['ports'] = [
+          {
+            "type": "draw2d.InputPort",
+            "id": hashCode("input:" + entry.name),
+            "width": 10,
+            "height": 10,
+            "alpha": 1,
+            "angle": 0,
+            "userData": {},
+            "cssClass": "draw2d_InputPort",
+            "bgColor": "#4F6870",
+            "color": "#1B1B1B",
+            "stroke": 1,
+            "dasharray": null,
+            "maxFanOut": 9007199254740991,
+            "name": "input0",
+            "port": "draw2d.InputPort",
+            "locator": "draw2d.layout.locator.InputPortLocator"
+          }, {
+            "type": "draw2d.OutputPort",
+            "id": hashCode("output:" + entry.name),
+            "width": 10,
+            "height": 10,
+            "alpha": 1,
+            "angle": 0,
+            "userData": {},
+            "cssClass": "draw2d_OutputPort",
+            "bgColor": "#4F6870",
+            "color": "#1B1B1B",
+            "stroke": 1,
+            "dasharray": null,
+            "maxFanOut": 9007199254740991,
+            "name": "output0",
+            "port": "draw2d.OutputPort",
+            "locator": "draw2d.layout.locator.OutputPortLocator"
+          }
+        ];
+        drawNodes['labels'] = [
+          {
+            "type": "draw2d.shape.basic.Label",
+            "id": hashCode("label:" + entry.name),
+            "text": entry.name,
+            "fontSize": 9,
+            "locator": "draw2d.layout.locator.BottomLocator"
+          }
+        ];
+
+        nodes.push(comp);
+        nodes.push(drawNodes);
+        nodes.push(icons);
+
+      }
+
+      return nodes
+}
+
+function getTransformationLinks(transformationHops) {
+    let links = new Array
+    let hops
+
+    // These are strangely rendered by xml2js
+    // transformation.order will always be a single node followed by an "hop" array,
+    // so we assign hops = transformation.order.hop
+    if(transformationHops.hasOwnProperty("hop")){
+        hops = transformationHops.hop
+    }else{
+        return
+    }
+
+    for (let k = 0, len = hops.length; k < len; k++) {
+
+        let hop = hops[k];
+        let hopname = hop.from + " -> " + hop.to;
+        let drawHops = {}
+        hopname = hop.from + " -> " + hop.to;
+        drawHops['type'] = "draw2d.Connection";
+        drawHops['id'] = hashCode(hopname);
+        drawHops['alpha'] = 1;
+        drawHops['angle'] = 0;
+        drawHops['userData'] = {};
+        drawHops['cssClass'] = "draw2d_Connection";
+        if (hop.evaluation === "Y") {
+            drawHops['cssClass'] = "draw2d_Connection_SUCCESS";
+        }
+        if (hop.evaluation === "N") {
+            drawHops['cssClass'] = "draw2d_Connection_FAIL";
+        }
+        if (hop.unconditional === "Y") {
+            drawHops['cssClass'] = "draw2d_Connection_UNCONDITIONAL";
+        }
+        if (hop.enabled === "N") {
+            drawHops['alpha'] = 0.3;
+        }
+        drawHops['stroke'] = 2;
+        drawHops['color'] = "#129CE4";
+        drawHops['outlineStroke'] = 0;
+        drawHops['outlineColor'] = "none";
+        drawHops['radius'] = 3;
+        drawHops['source'] = {
+            node: hashCode(hop.from),
+            port: "output0"
+        };
+        drawHops['target'] = {
+            node: hashCode(hop.to),
+            port: "input0",
+            "decoration": "draw2d.decoration.connection.ArrowDecorator"
+        };
+
+        links.push(drawHops);
+    }
+
+    return links
+}
+
 
 export function getClasses({sourceFile, program}: { sourceFile: ts.SourceFile, program: ts.Program }): types.UMLClass[] {
     const result: types.UMLClass[] = [];
