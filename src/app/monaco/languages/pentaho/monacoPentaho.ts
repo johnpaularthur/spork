@@ -40,7 +40,7 @@ const richEditConfiguration: monaco.languages.LanguageConfiguration = {
 
 };
 
-const monarchLanguage: monaco.languages.IMonarchLanguage= {
+const monarchLanguage: monaco.languages.IMonarchLanguage = {
 	defaultToken: '',
 	tokenPostfix: '.xml',
 

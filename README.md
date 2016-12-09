@@ -13,7 +13,7 @@ This project is getting a jumpstart from the great work that has done with the a
 * Chrome
 * NodeJS v6+
 
-## Usage
+## Usage (Dev)
 
 Get it:
 ```
@@ -29,6 +29,21 @@ npm i
 Run it:
 ```
 npm start
+```
+
+## Useage (outside the project)
+
+The following build build and link spork so you can run it from any directory.  Do this under the spork directory.
+```
+npm link
+```
+
+If it won't build due to monaco typescript issue, add this the monaco.d.ts file under "export interface IMonarchLanguage {"
+```
+/**
+    * // Useful regular expressions
+    */
+qualifiedName?: RegExp;
 ```
 
 Now open it in `chrome` at the URL mentioned in your console.

@@ -22,6 +22,8 @@ require('../../styles/themes/current/draw2d/main.css');
 // need a ts version, right now it is loaded in <script> tags in app.html
 //require('../../../public/assets/pentaho/file.js');
 
+declare const draw2d: any;
+
 const {blackHighlightColor} = styles;
 
 export interface Props extends tab.TabProps {
