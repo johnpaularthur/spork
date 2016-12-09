@@ -295,6 +295,10 @@ export var doOpenUmlDiagram = new UICommand({
     description: "UML Class diagram",
     context: CommandContext.Global,
 });
+export var doOpenPentahoEditor = new UICommand({
+    description: "Pentaho Visual Editor",
+    context: CommandContext.Global,
+});
 export var toggleSemanticView = new UICommand({
     description: "Toggle Semantic View",
     context: CommandContext.Global,

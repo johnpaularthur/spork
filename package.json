@@ -1,6 +1,6 @@
 {
   "name": "spork",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Node ETL Editor",
   "main": "src/server.js",
   "bin": {
@@ -71,7 +71,10 @@
     "ts-node": "1.7.0",
     "tslint": "3.15.1",
     "typescript": "2.2.0-dev.20161113",
-    "update-notifier": "1.0.2"
+    "update-notifier": "1.0.2",
+    "xml2js": "^0.4.17",
+    "xmldom": "^0.1.27",
+    "xpath": "0.0.23"
   },
   "devDependencies": {
     "clipboard": "^1.4.2",
@@ -98,6 +101,7 @@
     "react-redux": "4.4.5",
     "react-toggle": "2.1.1",
     "redux": "3.5.2",
+    "source-map-support": "^0.4.3",
     "style-loader": "^0.12.3",
     "toastr": "^2.1.2",
     "typestyle": "0.9.2",

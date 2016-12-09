@@ -13,7 +13,7 @@ This project is getting a jumpstart from the great work that has done with the a
 * Chrome
 * NodeJS v6+
 
-## Usage
+## Usage (Dev)
 
 Get it:
 ```
@@ -32,6 +32,20 @@ npm start
 ```
 
 Now open it in `chrome` at the URL mentioned in your console.
+
+
+## Useage (outside the project)
+
+The following build build and link spork so you can run it from any directory.  Do this under the spork directory.
+```
+npm link
+```
+
+Now cd to your desired project directory and issue:
+```
+spork -o
+```
+
 
 ## Features
 

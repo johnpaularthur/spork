@@ -13,6 +13,7 @@ import {DependencyView} from "./dependencyView";
 import {FindAndReplaceView} from "./findAndReplaceMulti";
 import {DocumentationView} from "./documentationView";
 import {UmlView} from "./umlView";
+import {PentahoEditor} from "./pentahoEditor";
 import {TsFlowView} from "./tsFlowView";
 import {TestedView} from "./testedView";
 
@@ -76,6 +77,12 @@ export const tabs = {
         searchSupport: TabSearchSupport.None,
         getTitle: (url) => `UML ${utils.getFileName(url)}`,
         component: UmlView,
+    },
+    pentaho: {
+        protocol: 'pentaho',
+        searchSupport: TabSearchSupport.None,
+        getTitle: (url) => `Pentaho ${utils.getFileName(url)}`,
+        component: PentahoEditor,
     },
     tsflow: {
         protocol: 'tsflow',

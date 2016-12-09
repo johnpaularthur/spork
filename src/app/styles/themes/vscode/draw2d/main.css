@@ -1,0 +1,29 @@
+
+.draw2d_shape_node_SUCCESS {
+  fill: lightgreen;
+}
+
+.draw2d_shape_node_TRANS {
+  fill: green;
+}
+
+.draw2d_shape_node_JOB {
+  fill: orange;
+}
+
+.draw2d_Connection_SUCCESS {
+  stroke: limegreen;
+}
+.draw2d_Connection_FAIL {
+  stroke: red;
+}
+.draw2d_Connection_UNCONDITIONAL {
+  stroke: black;
+}
+.draw2d_Connection_DISABLED {
+  stroke: rgba(51, 51, 51, 0.2);;
+}
+
+.Draw2dGraph{
+  background: #e9e9e9;
+}

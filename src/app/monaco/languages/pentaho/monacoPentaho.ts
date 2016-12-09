@@ -40,7 +40,7 @@ const richEditConfiguration: monaco.languages.LanguageConfiguration = {
 
 };
 
-const monarchLanguage: monaco.languages.IMonarchLanguage= {
+const monarchLanguage: monaco.languages.IMonarchLanguage = {
 	defaultToken: '',
 	tokenPostfix: '.xml',
 
@@ -83,7 +83,14 @@ const monarchLanguage: monaco.languages.IMonarchLanguage= {
 			[/&\w+;/, 'string.escape'],
 
             // constant
-            [/(&)([:\p{L}_][:\p{L}\d_.-]*|#[\d]+|#x[\da-fA-F]+)(;)/, 'constant.character.entity.xml']
+            //[/(&)([:\p{L}_][:\p{L}\d_.-]*|#[\d]+|#x[\da-fA-F]+)(;)/, 'constant.character.entity']
+            [/(&)([:\p{L}_][:\p{L}\d_.-]*|#[\d]+|#x[\da-fA-F]+)(;)/,
+                [
+                    { token: 'punctuation.definition.constant' },
+                    { token: 'constant.character.entity' },
+                    { token: 'punctuation.definition.constant' }
+                ]
+		    ],
 		],
 
 		cdata: [

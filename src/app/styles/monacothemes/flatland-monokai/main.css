@@ -65,3 +65,5 @@
 .monaco-editor.vs-dark.flatland-monokai .variable-2 { color: #9effff; }
 /* the default has nothing for token.tag */
 .monaco-editor.vs-dark.flatland-monokai .token.tag { color: rgba(249, 38, 114, 1); }
+
+.monaco-editor.vs-dark.flatland-monokai .token.punctuation.definition.constant { color: rgba(198, 120, 221, 1); }

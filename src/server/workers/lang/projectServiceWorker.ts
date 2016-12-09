@@ -11,6 +11,7 @@ import * as outputStatusCache from "./cache/outputStatusCache"
 import * as projectService from "./projectService";
 import * as docs from "./docs/docs";
 import * as umlDiagram from "./umlDiagram/umlDiagram";
+import * as graphJson from "./pentaho/graphJson";
 import * as tsFlow from "./tsFlow/tsFlow";
 import * as liveAnalysis from "./liveAnalysis/liveAnalysis";
 
@@ -87,7 +88,10 @@ namespace Worker {
      * Uml diagram
      */
     export var getUmlDiagramForFile : typeof contract.worker.getUmlDiagramForFile = umlDiagram.getUmlDiagramForFile;
-
+    /**
+     * Json from pentaho xml
+     */
+    export var getJsonForFile : typeof contract.worker.getJsonForFile = graphJson.getJsonForFile;
     /**
      * tsFlow
      */

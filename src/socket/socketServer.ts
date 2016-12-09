@@ -197,6 +197,9 @@ namespace Server {
     /** UML Diagram */
     export var getUmlDiagramForFile : typeof contract.server.getUmlDiagramForFile = projectServiceMaster.worker.getUmlDiagramForFile;
 
+    /** Json from pentaho xml */
+    export var getJsonForFile : typeof contract.server.getJsonForFile = projectServiceMaster.worker.getJsonForFile;
+
     /** tsFlow */
     export var getFlowRoots : typeof contract.server.getFlowRoots = projectServiceMaster.worker.getFlowRoots;
 
