@@ -51,3 +51,4 @@ spork -o
 
 TODO
 
+![Pentaho Visual Editor](https://cloud.githubusercontent.com/assets/7483101/21063149/d05d7e7a-be19-11e6-84d4-456b52b21b89.png)
