@@ -17,6 +17,7 @@ import * as typeIcon from "../../components/typeIcon";
 import * as gls from "../../base/gls";
 import * as typestyle from "typestyle";
 import {MarkDown} from "../../markdown/markdown";
+require('../../styles/themes/current/draw2d/main.css');
 
 // need a ts version, right now it is loaded in <script> tags in app.html
 //require('../../../public/assets/pentaho/file.js');
@@ -25,12 +26,14 @@ const {blackHighlightColor} = styles;
 
 export interface Props extends tab.TabProps {
 }
+
 export interface State {
     filter?: string;
     classes?: types.UMLClass[];
     selected?: types.UMLClass;
     uniqid?: string;
     data?: string;
+    canvas?: Object;
 }
 
 export namespace PentahoEditorStyles {
@@ -61,8 +64,11 @@ export namespace PentahoEditorStyles {
 
 export class PentahoEditor extends ui.BaseComponent<Props, State> {
 
+    
+
     constructor(props: Props) {
         super(props);
+        
         var randLetter = String.fromCharCode(65 + Math.floor(Math.random() * 26));
         var uniqid = randLetter + Date.now();
         this.filePath = utils.getFilePathFromUrl(props.url);
@@ -72,6 +78,7 @@ export class PentahoEditor extends ui.BaseComponent<Props, State> {
             selected: null,
             uniqid: uniqid
         };
+        
     }
 
     refs: {
@@ -82,12 +89,13 @@ export class PentahoEditor extends ui.BaseComponent<Props, State> {
     }
 
     filePath: string;
+
     componentDidMount() {
 
         /**
          * Initial load + load on project change
          */
-        this.loadData();
+        this.loadData(false);
         this.disposible.add(
             cast.activeProjectFilePathsUpdated.on(() => {
                 this.loadData();
@@ -152,7 +160,7 @@ export class PentahoEditor extends ui.BaseComponent<Props, State> {
         );
     }
 
-    renderCanvas(canvasId) {
+    renderCanvas(canvasId, destroyAction = true) {
 
       draw2d.shape.basic.Label.inject( {
           clearCache:function() {
@@ -166,10 +174,7 @@ export class PentahoEditor extends ui.BaseComponent<Props, State> {
               }
         });
 
-      // create the canvas for the user interaction
-      //
-      var canvas = new draw2d.Canvas(canvasId);
-
+        let canvas = new draw2d.Canvas(canvasId);
       // unmarshal the JSON document into the canvas
       // (load)
 
@@ -225,7 +230,7 @@ export class PentahoEditor extends ui.BaseComponent<Props, State> {
     handleKey = (e: any) => {
         let unicode = e.charCode;
         if (String.fromCharCode(unicode).toLowerCase() === "r") {
-            this.loadData();
+            this.loadData(true);
         }
     }
 
@@ -233,7 +238,7 @@ export class PentahoEditor extends ui.BaseComponent<Props, State> {
         // TODO:
     }
 
-    loadData = () => {
+    loadData = (destroyAction = true) => {
         server.getJsonForFile({filePath: this.filePath}).then(res => {
             // // Preserve selected
             // let selected = this.state.selected && res.classes.find(c => c.name === this.state.selected.name);
@@ -244,9 +249,9 @@ export class PentahoEditor extends ui.BaseComponent<Props, State> {
             // this.setState({ classes: res.classes, selected });
             // this.filter();
             //console.log(res);
-            this.setState({data: '[{ "type": "draw2d.shape.basic.Rectangle",  "id": "d278094b-8d1a-af71-f828-50129a034676",    "x": 124,    "y": 114,    "width": 50,    "height": 100,    "alpha": 1,    "angle": 0,    "userData": {},    "cssClass": "draw2d_shape_basic_Rectangle",   "bgColor": "#A0A0A0",    "color": "#1B1B1B",    "stroke": 1,    "radius": 0,    "dasharray": null  }]'})
-            console.log("state set", res);
-            this.renderCanvas(this.state.uniqid);
+            this.setState({data: res})
+            //console.log("state set", res);
+            this.renderCanvas(this.state.uniqid,destroyAction);
         })
     }
 
