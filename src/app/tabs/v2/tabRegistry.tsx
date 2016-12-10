@@ -13,7 +13,7 @@ import {DependencyView} from "./dependencyView";
 import {FindAndReplaceView} from "./findAndReplaceMulti";
 import {DocumentationView} from "./documentationView";
 import {UmlView} from "./umlView";
-import {PentahoEditor} from "./pentahoEditor";
+import {PentahoEditor} from "./pentahoEditorJointJs";
 import {TsFlowView} from "./tsFlowView";
 import {TestedView} from "./testedView";
 
