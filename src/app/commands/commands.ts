@@ -296,6 +296,7 @@ export var doOpenUmlDiagram = new UICommand({
     context: CommandContext.Global,
 });
 export var doOpenPentahoEditor = new UICommand({
+    keyboardShortcut: 'mod+shift+0',
     description: "Pentaho Visual Editor",
     context: CommandContext.Global,
 });
