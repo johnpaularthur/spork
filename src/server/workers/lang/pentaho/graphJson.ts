@@ -170,38 +170,17 @@ function getJobNodes(jobEntries) {
 
         let entry = entries[k];
 
-        let comp = {};
-        comp['type'] = "draw2d.shape.composite.Group";
-        comp['id'] = hashCode("comp:" + entry.name);
-        comp['x'] = entry.xloc;
-        comp['y'] = entry.yloc;
-        comp['width'] = 50;
-        comp['height'] = 50;
-        let icons = {};
-        icons['type'] = "draw2d.shape.icon.Star3";
-        icons['userData'] = {type:entry.type};
-        icons['cssClass'] = "draw2d_shape_node_UNKNOWN";
-            if (entry.type === "SPECIAL") {
-            if (entry.start === "Y") {
-                icons['type'] = "draw2d.shape.icon.Star3";
-                icons['userData'] = {type:'START'};
-                icons['cssClass'] = "draw2d_shape_node_START";
-            }
-            if (entry.dummy === "Y") {
-                icons['type'] = "draw2d.shape.icon.Star3";
-                icons['userData'] = {type:'DUMMY'};
-                icons['cssClass'] = "draw2d_shape_node_DUMMY";
-            }
-            }
-        icons['id'] = hashCode("icon" + entry.name);
-        icons['x'] = parseInt(entry.xloc) + 12.5;
-        icons['y'] = parseInt(entry.yloc) + 12.5;
-        icons['width'] = 25;
-        icons['height'] = 25;
-        icons['composite'] = hashCode("comp:" + entry.name);
-
         let drawNodes = {};
-        drawNodes['type'] = "edo.LabeledBox";
+
+        drawNodes['type'] = "pentahoicons." + entry.type;
+        if (entry.type === "SPECIAL") {
+            if (entry.start === "Y") {
+                drawNodes['type'] = "pentahoicons.START";
+            }
+            if (entry.dummy === "Y") {        
+                drawNodes['type'] = "pentahoicons.DUMMY";
+            }
+        }
         drawNodes['id'] = hashCode(entry.name);
         drawNodes['x'] = entry.xloc;
         drawNodes['y'] = entry.yloc;
@@ -210,11 +189,11 @@ function getJobNodes(jobEntries) {
         drawNodes['alpha'] = 1;
         drawNodes['angle'] = 0;
         drawNodes['userData'] = {};
-        drawNodes['cssClass'] = "draw2d_shape_node_" + entry.type;
+        drawNodes['cssClass'] = "draw2d_shape_node_ignore_" + entry.type;
         drawNodes['stroke'] = 1;
         drawNodes['radius'] = 2;
         drawNodes['dasharray'] = null;
-        drawNodes['composite'] = hashCode("comp:" + entry.name);
+        //drawNodes['composite'] = hashCode("comp:" + entry.name);
         drawNodes['ports'] = [
           {
             "type": "draw2d.InputPort",
@@ -262,9 +241,9 @@ function getJobNodes(jobEntries) {
           }
         ];
 
-        nodes.push(comp);
+        //nodes.push(comp);
         nodes.push(drawNodes);
-        nodes.push(icons);
+        //nodes.push(icons);
 
       }
 
@@ -384,28 +363,8 @@ function getTransformationNodes(transformationSteps) {
 
         let entry = steps[k];
 
-        let comp = {};
-        comp['type'] = "draw2d.shape.composite.Group";
-        comp['id'] = hashCode("comp:" + entry.name);
-        comp['x'] = entry.GUI.xloc;
-        comp['y'] = entry.GUI.yloc;
-        comp['width'] = 50;
-        comp['height'] = 50;
-
-
-        let icons = {};
-        icons['type'] = "draw2d.shape.icon.Star3";
-        icons['userData'] = {type:entry.type};
-        icons['cssClass'] = "draw2d_shape_node_" + entry.type;
-        icons['id'] = hashCode("icon" + entry.name);
-        icons['x'] = parseInt(entry.GUI.xloc) + 12.5;
-        icons['y'] = parseInt(entry.GUI.yloc) + 12.5;
-        icons['width'] = 25;
-        icons['height'] = 25;
-        icons['composite'] = hashCode("comp:" + entry.name);
-
         let drawNodes = {};
-        drawNodes['type'] = "edo.LabeledBox";
+        drawNodes['type'] = "pentahoicons." + entry.type;
         drawNodes['id'] = hashCode(entry.name);
         drawNodes['x'] = entry.GUI.xloc;
         drawNodes['y'] = entry.GUI.yloc;
@@ -418,7 +377,7 @@ function getTransformationNodes(transformationSteps) {
         drawNodes['stroke'] = 1;
         drawNodes['radius'] = 2;
         drawNodes['dasharray'] = null;
-        drawNodes['composite'] = hashCode("comp:" + entry.name);
+        //drawNodes['composite'] = hashCode("comp:" + entry.name);
         drawNodes['ports'] = [
           {
             "type": "draw2d.InputPort",
@@ -466,9 +425,9 @@ function getTransformationNodes(transformationSteps) {
           }
         ];
 
-        nodes.push(comp);
+        //nodes.push(comp);
         nodes.push(drawNodes);
-        nodes.push(icons);
+        //nodes.push(icons);
 
       }
 

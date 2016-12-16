@@ -19,6 +19,7 @@ import * as typestyle from "typestyle";
 import {MarkDown} from "../../markdown/markdown";
 require('../../styles/themes/current/draw2d/main.css');
 
+
 // need a ts version, right now it is loaded in <script> tags in app.html
 //require('../../../public/assets/pentaho/file.js');
 
