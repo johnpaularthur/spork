@@ -46,11 +46,10 @@ function hashCode(e) {
     char = e.charCodeAt(i);
     hash = (hash << 5) - hash + char;
     hash = hash & hash;
-    hash |= 0;
     i++;
   }
 
-  return "HASH" + hash;
+  return hash;
 }
 
 export function getObject(contents: string) {
@@ -83,12 +82,12 @@ function getFileInfo(jsObject) {
                 nodes = [...nodes,...hops]
             }
         }
-        // if(content.hasOwnProperty("notepads")){
-        //     let notepads = getNotes(content.notepads)
-        //     if (notepads) {
-        //         nodes = [...nodes,...notepads]
-        //     }
-        // }
+        if(content.hasOwnProperty("notepads")){
+            let notepads = getNotes(content.notepads)
+            if (notepads) {
+                nodes = [...nodes,...notepads]
+            }
+        }
 
     }else{
 
@@ -106,17 +105,17 @@ function getFileInfo(jsObject) {
                 nodes = [...nodes,...hops]
             }
         }
-        // if(content.hasOwnProperty("notepads")){
-        //     let notepads = getNotes(content.notepads)
-        //     if (notepads) {
-        //         nodes = [...nodes,...notepads]
-        //     }
-        // }
+        if(content.hasOwnProperty("notepads")){
+            let notepads = getNotes(content.notepads)
+            if (notepads) {
+                nodes = [...nodes,...notepads]
+            }
+        }
         //console.log(jsObject.transformation)
 
     }
 
-    return nodes
+    return JSON.stringify(nodes, null, 2)
 
 }
 
@@ -171,24 +170,101 @@ function getJobNodes(jobEntries) {
 
         let entry = entries[k];
 
-        let cell = {};
-
-        // The "SPECIAL" type can be one of two steps: START or DUMMY
-        if (entry.type === "SPECIAL") {
+        let comp = {};
+        comp['type'] = "draw2d.shape.composite.Group";
+        comp['id'] = hashCode("comp:" + entry.name);
+        comp['x'] = entry.xloc;
+        comp['y'] = entry.yloc;
+        comp['width'] = 50;
+        comp['height'] = 50;
+        let icons = {};
+        icons['type'] = "draw2d.shape.icon.Star3";
+        icons['userData'] = {type:entry.type};
+        icons['cssClass'] = "draw2d_shape_node_UNKNOWN";
+            if (entry.type === "SPECIAL") {
             if (entry.start === "Y") {
-                cell['type'] = "pentaho.START";
+                icons['type'] = "draw2d.shape.icon.Star3";
+                icons['userData'] = {type:'START'};
+                icons['cssClass'] = "draw2d_shape_node_START";
             }
             if (entry.dummy === "Y") {
-                cell['type'] = "pentaho.DUMMY";
+                icons['type'] = "draw2d.shape.icon.Star3";
+                icons['userData'] = {type:'DUMMY'};
+                icons['cssClass'] = "draw2d_shape_node_DUMMY";
             }
-        }else{
-            cell['type'] = "pentaho."+ entry.type;
-        }
+            }
+        icons['id'] = hashCode("icon" + entry.name);
+        icons['x'] = parseInt(entry.xloc) + 12.5;
+        icons['y'] = parseInt(entry.yloc) + 12.5;
+        icons['width'] = 25;
+        icons['height'] = 25;
+        icons['composite'] = hashCode("comp:" + entry.name);
 
-        cell['position'] = {x: parseInt(entry.xloc), y: parseInt(entry.yloc) }
-        cell['id'] = hashCode(entry.name);        
+        let drawNodes = {};
+        drawNodes['type'] = "edo.LabeledBox";
+        drawNodes['id'] = hashCode(entry.name);
+        drawNodes['x'] = entry.xloc;
+        drawNodes['y'] = entry.yloc;
+        drawNodes['width'] = 50;
+        drawNodes['height'] = 50;
+        drawNodes['alpha'] = 1;
+        drawNodes['angle'] = 0;
+        drawNodes['userData'] = {};
+        drawNodes['cssClass'] = "draw2d_shape_node_" + entry.type;
+        drawNodes['stroke'] = 1;
+        drawNodes['radius'] = 2;
+        drawNodes['dasharray'] = null;
+        drawNodes['composite'] = hashCode("comp:" + entry.name);
+        drawNodes['ports'] = [
+          {
+            "type": "draw2d.InputPort",
+            "id": hashCode("input:" + entry.name),
+            "width": 10,
+            "height": 10,
+            "alpha": 1,
+            "angle": 0,
+            "userData": {},
+            "cssClass": "draw2d_InputPort",
+            "bgColor": "#4F6870",
+            "color": "#1B1B1B",
+            "stroke": 1,
+            "dasharray": null,
+            "maxFanOut": 9007199254740991,
+            "name": "input0",
+            "port": "draw2d.InputPort",
+            "locator": "draw2d.layout.locator.InputPortLocator"
+          }, {
+            "type": "draw2d.OutputPort",
+            "id": hashCode("output:" + entry.name),
+            "width": 10,
+            "height": 10,
+            "alpha": 1,
+            "angle": 0,
+            "userData": {},
+            "cssClass": "draw2d_OutputPort",
+            "bgColor": "#4F6870",
+            "color": "#1B1B1B",
+            "stroke": 1,
+            "dasharray": null,
+            "maxFanOut": 9007199254740991,
+            "name": "output0",
+            "port": "draw2d.OutputPort",
+            "locator": "draw2d.layout.locator.OutputPortLocator"
+          }
+        ];
+        drawNodes['labels'] = [
+          {
+            "type": "draw2d.shape.basic.Label",
+            "id": hashCode("label:" + entry.name),
+            "text": entry.name,
+            "fontSize": 9,
+            "locator": "draw2d.layout.locator.BottomLocator"
+          }
+        ];
 
-        nodes.push(cell);
+        nodes.push(comp);
+        nodes.push(drawNodes);
+        nodes.push(icons);
 
       }
 
@@ -209,42 +285,41 @@ function getJobLinks(jobHops) {
     }
 
     for (let k = 0, len = hops.length; k < len; k++) {
-        let connectorStroke;
+
         let hop = hops[k];
         let hopname = hop.from + " -> " + hop.to;
         let drawHops = {}
-        drawHops['type'] = "link";
+        drawHops['type'] = "draw2d.Connection";
         drawHops['id'] = hashCode(hopname);
-
-        drawHops['router'] = { "name": "manhattan" };
-        drawHops['connector'] = { "name": "rounded" };
-     
-        drawHops['z'] = 3;
-
+        drawHops['alpha'] = 1;
+        drawHops['angle'] = 0;
+        drawHops['userData'] = {};
+        drawHops['cssClass'] = "draw2d_Connection";
         if (hop.evaluation === "Y") {
-            connectorStroke = "green";
+          drawHops['cssClass'] = "draw2d_Connection_SUCCESS";
         }
         if (hop.evaluation === "N") {
-            connectorStroke = "red";
+          drawHops['cssClass'] = "draw2d_Connection_FAIL";
         }
         if (hop.unconditional === "Y") {
-            connectorStroke = "#066bb0";
+          drawHops['cssClass'] = "draw2d_Connection_UNCONDITIONAL";
         }
         if (hop.enabled === "N") {
-            connectorStroke = "#666666";
+          drawHops['alpha'] = 0.3;
         }
-
-        drawHops['attrs'] = {
-            ".connection": { "stroke": connectorStroke, "stroke-width": 2 },
-            
-            ".marker-target": { "stroke": "none", "fill": connectorStroke, "d": "M 10 0 L 0 5 L 10 10 z" }
-        }
-  
+        drawHops['stroke'] = 2;
+        drawHops['color'] = "#129CE4";
+        drawHops['outlineStroke'] = 0;
+        drawHops['outlineColor'] = "none";
+        drawHops['radius'] = 3;
         drawHops['source'] = {
-          id: hashCode(hop.from)
+          node: hashCode(hop.from),
+          port: "output0",
         };
         drawHops['target'] = {
-          id: hashCode(hop.to)          
+          node: hashCode(hop.to),
+          port: "input0",
+          "decoration": "draw2d.decoration.connection.ArrowDecorator"
         };
 
         links.push(drawHops);
@@ -309,13 +384,91 @@ function getTransformationNodes(transformationSteps) {
 
         let entry = steps[k];
 
-                let cell = {};
+        let comp = {};
+        comp['type'] = "draw2d.shape.composite.Group";
+        comp['id'] = hashCode("comp:" + entry.name);
+        comp['x'] = entry.GUI.xloc;
+        comp['y'] = entry.GUI.yloc;
+        comp['width'] = 50;
+        comp['height'] = 50;
 
-        cell['type'] = "pentaho."+ entry.type;
-        cell['position'] = {x: parseInt(entry.GUI.xloc), y: parseInt(entry.GUI.yloc) }
-        cell['id'] = hashCode(entry.name);        
 
-        nodes.push(cell);
+        let icons = {};
+        icons['type'] = "draw2d.shape.icon.Star3";
+        icons['userData'] = {type:entry.type};
+        icons['cssClass'] = "draw2d_shape_node_" + entry.type;
+        icons['id'] = hashCode("icon" + entry.name);
+        icons['x'] = parseInt(entry.GUI.xloc) + 12.5;
+        icons['y'] = parseInt(entry.GUI.yloc) + 12.5;
+        icons['width'] = 25;
+        icons['height'] = 25;
+        icons['composite'] = hashCode("comp:" + entry.name);
+
+        let drawNodes = {};
+        drawNodes['type'] = "edo.LabeledBox";
+        drawNodes['id'] = hashCode(entry.name);
+        drawNodes['x'] = entry.GUI.xloc;
+        drawNodes['y'] = entry.GUI.yloc;
+        drawNodes['width'] = 50;
+        drawNodes['height'] = 50;
+        drawNodes['alpha'] = 1;
+        drawNodes['angle'] = 0;
+        drawNodes['userData'] = {};
+        drawNodes['cssClass'] = "draw2d_shape_node_" + entry.type;
+        drawNodes['stroke'] = 1;
+        drawNodes['radius'] = 2;
+        drawNodes['dasharray'] = null;
+        drawNodes['composite'] = hashCode("comp:" + entry.name);
+        drawNodes['ports'] = [
+          {
+            "type": "draw2d.InputPort",
+            "id": hashCode("input:" + entry.name),
+            "width": 10,
+            "height": 10,
+            "alpha": 1,
+            "angle": 0,
+            "userData": {},
+            "cssClass": "draw2d_InputPort",
+            "bgColor": "#4F6870",
+            "color": "#1B1B1B",
+            "stroke": 1,
+            "dasharray": null,
+            "maxFanOut": 9007199254740991,
+            "name": "input0",
+            "port": "draw2d.InputPort",
+            "locator": "draw2d.layout.locator.InputPortLocator"
+          }, {
+            "type": "draw2d.OutputPort",
+            "id": hashCode("output:" + entry.name),
+            "width": 10,
+            "height": 10,
+            "alpha": 1,
+            "angle": 0,
+            "userData": {},
+            "cssClass": "draw2d_OutputPort",
+            "bgColor": "#4F6870",
+            "color": "#1B1B1B",
+            "stroke": 1,
+            "dasharray": null,
+            "maxFanOut": 9007199254740991,
+            "name": "output0",
+            "port": "draw2d.OutputPort",
+            "locator": "draw2d.layout.locator.OutputPortLocator"
+          }
+        ];
+        drawNodes['labels'] = [
+          {
+            "type": "draw2d.shape.basic.Label",
+            "id": hashCode("label:" + entry.name),
+            "text": entry.name,
+            "fontSize": 9,
+            "locator": "draw2d.layout.locator.BottomLocator"
+          }
+        ];
+
+        nodes.push(comp);
+        nodes.push(drawNodes);
+        nodes.push(icons);
 
       }
 
@@ -337,44 +490,41 @@ function getTransformationLinks(transformationHops) {
 
     for (let k = 0, len = hops.length; k < len; k++) {
 
-        let connectorStroke;
         let hop = hops[k];
         let hopname = hop.from + " -> " + hop.to;
         let drawHops = {}
         hopname = hop.from + " -> " + hop.to;
-
-        drawHops['type'] = "link";
+        drawHops['type'] = "draw2d.Connection";
         drawHops['id'] = hashCode(hopname);
-
-        drawHops['router'] = { "name": "manhattan" };
-        drawHops['connector'] = { "name": "rounded" };
-        drawHops['z'] = 3;
-        connectorStroke = "#066bb0";
-
+        drawHops['alpha'] = 1;
+        drawHops['angle'] = 0;
+        drawHops['userData'] = {};
+        drawHops['cssClass'] = "draw2d_Connection";
         if (hop.evaluation === "Y") {
-            connectorStroke = "green";
+            drawHops['cssClass'] = "draw2d_Connection_SUCCESS";
         }
         if (hop.evaluation === "N") {
-            connectorStroke = "red";
+            drawHops['cssClass'] = "draw2d_Connection_FAIL";
         }
         if (hop.unconditional === "Y") {
-            connectorStroke = "#066bb0";
+            drawHops['cssClass'] = "draw2d_Connection_UNCONDITIONAL";
         }
         if (hop.enabled === "N") {
-            connectorStroke = "#666666";
+            drawHops['alpha'] = 0.3;
         }
-
-        drawHops['attrs'] = {
-            ".connection": { "stroke": connectorStroke, "stroke-width": 2 },
-            
-            ".marker-target": { "stroke":"none", "fill": connectorStroke, "d": "M 10 0 L 0 5 L 10 10 z" }
-        }
-  
+        drawHops['stroke'] = 2;
+        drawHops['color'] = "#129CE4";
+        drawHops['outlineStroke'] = 0;
+        drawHops['outlineColor'] = "none";
+        drawHops['radius'] = 3;
         drawHops['source'] = {
-          id: hashCode(hop.from)
+            node: hashCode(hop.from),
+            port: "output0"
         };
         drawHops['target'] = {
-          id: hashCode(hop.to)          
+            node: hashCode(hop.to),
+            port: "input0",
+            "decoration": "draw2d.decoration.connection.ArrowDecorator"
         };
 
         links.push(drawHops);

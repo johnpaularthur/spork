@@ -3184,6 +3184,8 @@ interface JQuery {
      * @param callback The new function to add to the queue, with a function to call that will dequeue the next item.
      */
     queue(queueName: string, callback: Function): JQuery;
+
+    //panzoom(option?: string, options?: any): JQuery;
 }
 declare module "jquery" {
     export = $;
